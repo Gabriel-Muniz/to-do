@@ -1,13 +1,17 @@
 import Tasks from "./tasks";
 
+export let projectArray = [];
+
 export default class Project {
   constructor(title) {
     this.title = title;
     this.taskArray = [];
+
+    projectArray.push(this);
   }
 
   get title() {
-    return _title;
+    return this._title;
   }
 
   set title(title) {
@@ -19,8 +23,9 @@ export default class Project {
   }
 
   logTasks() {
-    this.taskArray.forEach(element => {
-        element.logTask();
+    console.log(this.title);
+    this.taskArray.forEach((element) => {
+      element.logTask();
     });
   }
 }
