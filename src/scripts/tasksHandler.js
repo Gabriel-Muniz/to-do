@@ -1,30 +1,33 @@
 import Tasks from "../classes/tasks";
 
-export default function appendTasks(parentProject) {
-    parentProject.forEach((task) => {
-    const project = document.querySelector(".project-card"); // <- First card to encounter. Has to change
+export default function appendTasks(taskArray, index) {
+  taskArray.forEach(task => {
+    const project = document.querySelector(`[data-id="${index}"`);
 
-    const container = document.createElement("div");
-    container.classList.add("task-container");
+    const taskCont = document.createElement("div");
+    taskCont.classList.add("task-container");
 
-    const title = document.createElement("h4");
-    title.classList.add("task-title");
+    const taskTitle = document.createElement("ul");
+    taskTitle.classList.add("task-title");
+    taskTitle.textContent = task.title;
 
-    const description = document.createElement("span");
-    description.classList.add("task-description");
+    const taskDesc = document.createElement("li");
+    taskDesc.classList.add("task-description");
+    taskDesc.textContent = task.description;
 
-    const priority = document.createElement("span");
-    priority.classList.add("task-priority");
+    const taskData = document.createElement("span");
+    taskData.classList.add("task-data");
+    taskData.textContent = task.dueDate;
 
-    container.appendChild(title)
-    container.appendChild(description)
-    container.appendChild(priority)
+    const taskPriority = document.createElement("span");
+    taskPriority.classList.add("task-priority");
+    taskPriority.textContent = `\n${task.priority}`;
 
-    project.appendChild(container)
+    taskTitle.appendChild(taskDesc);
+    taskCont.appendChild(taskTitle);
+    taskCont.appendChild(taskData);
+    taskCont.appendChild(taskPriority);
 
-    title.textContent = task.title;
-    description.textContent = task.description;
-    priority.textContent = task.priority;
-
+    project.appendChild(taskCont);
   });
 }

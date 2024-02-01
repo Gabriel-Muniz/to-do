@@ -8,28 +8,32 @@ let task1 = new Tasks(
   "Limpar o quarto",
   "Limpar o quarto pq ta foda",
   "28/01/2024",
-  "URGENTE"
+  "URGENTE",
+  1
 );
 
 let task2 = new Tasks(
   "Procurar trabalhar",
   "Procurar ser sujeito homem e ir",
   "03/05/2024",
-  "Moderado"
+  "Moderado",
+  1
 );
 
 let task3 = new Tasks(
   "i've tried so hard",
   "Something its happening here man",
   "07/07/2024",
-  "Baixa"
+  "Baixa",
+  0
 );
 
 let task4 = new Tasks(
   "Complicado",
   "It's really complicated to be honest",
   "32/50/2025",
-  "Moderado"
+  "Moderado",
+  0
 );
 
 console.log(task1.getTask());

@@ -8,6 +8,8 @@ export default class Project {
     this.taskArray = [];
 
     projectArray.push(this);
+    this.projectId = projectArray.length-1;
+
   }
 
   get title() {
@@ -16,6 +18,14 @@ export default class Project {
 
   set title(title) {
     this._title = title;
+  }
+
+  get projectId(){
+    return this._projectId;
+  }
+
+  set projectId(projectId){
+    this._projectId = projectId;
   }
 
   addTask(task) {
@@ -27,5 +37,6 @@ export default class Project {
     this.taskArray.forEach((element) => {
       element.logTask();
     });
+    console.log("Project id: ", this.projectId);
   }
 }
