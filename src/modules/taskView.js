@@ -17,11 +17,8 @@ export function renderTaskMainSection(task) {
   });
 
   taskTitle.textContent = task.title;
-  taskProgress.textContent = task.progress;
-  
+  taskProgress.textContent = `${task.progress}%`;
 
-  console.log(clone);
-  
   return clone;
 
 }

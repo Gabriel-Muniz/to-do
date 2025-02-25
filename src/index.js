@@ -2,6 +2,7 @@ import { Step } from "./models/Step";
 import { Project } from "./models/Project";
 import { Task } from "./models/Task";
 import "./styles/reset.css"
+import "./styles/main.css"
 import { createProjectMainSection } from "./modules/projectView.js";
 
 const step1 = new Step("Revisar álgebra", true);

@@ -3,7 +3,7 @@ import { renderTaskMainSection } from "./taskView";
 export function createProjectMainSection(projects) {
   const template = document.getElementById('project-template-main');
 
-  const body = document.querySelector('body');
+  const mainSection = document.querySelector('.main-section');
 
   projects.forEach(project => {
     const clone = document.importNode(template.content, true);
@@ -24,6 +24,6 @@ export function createProjectMainSection(projects) {
     projectDueDate.textContent = project.dueDate;
     projectDescription.textContent = project.description;
    
-    body.append(clone)
+    mainSection.append(clone)
   });
 }

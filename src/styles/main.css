@@ -1,0 +1,37 @@
+body {
+  min-height: 100vh;
+  display: flex;
+}
+.sidebar,
+.main-section {
+  padding: 25px 50px;
+}
+
+.sidebar {
+  width: 500px;
+  background-color: chocolate;
+}
+.main-section {
+  display: flex;
+  gap: 25px;
+  flex-grow: 1;
+}
+.project-wrapper {
+  padding: 10px 20px;
+  width: 500px;
+  height: min-content;
+  border: 2px solid black;
+}
+.project-header,
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-header {
+  width: 90%;
+}
+li {
+  display: flex;
+  gap: 1em;
+}
