@@ -2,6 +2,7 @@ import { Step } from "./models/Step";
 import { Project } from "./models/Project";
 import { Task } from "./models/Task";
 import "./styles/reset.css"
+import { createProjectMainSection } from "./modules/projectView.js";
 
 const step1 = new Step("Revisar álgebra", true);
 const step2 = new Step("Revisar geometria", true);
@@ -43,3 +44,5 @@ const project2 = new Project(
 
 let projects = [];
 projects.push(project1, project2);
+
+createProjectMainSection(projects);

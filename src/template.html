@@ -6,4 +6,35 @@
     <title>Document</title>
   </head>
   <body></body>
+
+  <template id="project-template-main">
+    <div class="project-wrapper">
+      <div class="project-header">
+        <h1 class="project-title"></h1>
+        <span class="project-dueDate"></span>
+      </div>
+      <div class="project-body">
+        <p class="project-description"></p>
+      </div>
+    </div>
+  </template>
+
+  <template id="task-template-main">
+    <div class="task-wrapper">
+      <div class="task-header">
+        <h2 class="task-title"></h2>
+        <span class="task-progress"></span>
+      </div>
+      <div class="task-body">
+        <ul class="task-steps"></ul>
+      </div>
+    </div>
+  </template>
+
+  <template id="step-template">
+    <li class="step-wrapper">
+      <input type="checkbox" name="step-status" />
+      <h3 class="step-title"></h3>
+    </div>
+  </template>
 </html>
