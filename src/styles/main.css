@@ -8,17 +8,16 @@ body {
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 500px;
   background-color: chocolate;
 }
-.main-section {
-  display: flex;
-  gap: 25px;
-  flex-grow: 1;
-}
+
 .project-wrapper {
   padding: 10px 20px;
-  width: 500px;
+  width: 100%;
   height: min-content;
   border: 2px solid black;
 }

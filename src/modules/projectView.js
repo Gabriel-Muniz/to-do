@@ -3,7 +3,7 @@ import { renderTaskMainSection } from "./taskView";
 export function createProjectMainSection(projects) {
   const template = document.getElementById('project-template-main');
 
-  const mainSection = document.querySelector('.main-section');
+  const mainSection = document.querySelector('.sidebar');
 
   projects.forEach(project => {
     const clone = document.importNode(template.content, true);
