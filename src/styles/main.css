@@ -14,11 +14,10 @@ body {
   width: 500px;
   background-color: chocolate;
 }
-
 .project-wrapper {
-  padding: 10px 20px;
   width: 100%;
   height: min-content;
+  padding: 15px 0;
   border: 2px solid black;
 }
 .project-header,
@@ -29,6 +28,10 @@ body {
 }
 .task-header {
   width: 90%;
+}
+.hidden > .project-body,
+.hidden > .task-body {
+  display: none;
 }
 li {
   display: flex;
