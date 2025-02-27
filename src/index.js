@@ -7,7 +7,7 @@ import "./styles/reset.css"
 import "./styles/main.css"
 
 const step1 = new Step("Revisar álgebra", true);
-const step2 = new Step("Revisar geometria", true);
+const step2 = new Step("Revisar geometria", false);
 const step9 = new Step("Revisar logaritmo", false);
 
 const step3 = new Step("Pesquisar tópicos principais", false);
@@ -24,8 +24,8 @@ const task2 = new Task("Preparar apresentação de História", "2023-12-10", 20,
 const task3 = new Task("Coletar dados", "2023-11-10", 80, [step5, step6]);
 const task4 = new Task("Escrever relatório", "2023-11-18", 30, [step7, step8]);
 
-task1.calcProgress();
-task2.calcProgress();
+// task1.calcProgress();
+// task2.calcProgress();
 
 
 const project1 = new Project(
@@ -49,4 +49,9 @@ projects.push(project1, project2);
 
 createProjectMainSection(projects);
 
-attachEventsToModules();
+attachEventsToModules()
+
+console.log(project1._title);
+project1._title = 'Teste de Underline!';
+console.log(project1.title)
+

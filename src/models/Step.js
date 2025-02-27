@@ -1,7 +1,23 @@
 export class Step {
   constructor(title, status = false) {
-    this.title = title;
-    this.status = status;
+    this._title = title;
+    this._status = status;
+  }
+
+  get title(){
+    return this._title;
+  }
+
+  set title(newTitle){
+    this._title = newTitle;
+  }
+
+  get status(){
+    return this._status;
+  }
+
+  set status(newStatus){
+    this._status = newStatus;
   }
 
   logStep() {

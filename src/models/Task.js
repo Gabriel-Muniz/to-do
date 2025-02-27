@@ -6,6 +6,36 @@ export class Task {
     this.taskSteps = taskSteps;
   }
 
+  get title(){
+    return this._title;
+  }
+
+  set title(newTitle){
+    this._title = newTitle;
+  }
+
+  get dueDate(){
+    return this._dueDate;
+  }
+
+  set dueDate(newDueDate){
+    this._dueDate = newDueDate;
+  }
+
+  get progress(){
+    let milestones = (100 / this.taskSteps.length).toFixed(2);
+
+    const doneSteps = this.taskSteps.filter((step) => step.status === true);
+
+    this.progress = Math.ceil(doneSteps.length * milestones);
+
+    return this._progress;
+  }
+
+  set progress(newProgress){
+    this._progress = newProgress
+  }
+
   logTask() {
     console.log(`
       ----- ${this.title} // ${this.dueDate} -----
@@ -32,11 +62,11 @@ export class Task {
     this.taskSteps.splice(stepIndex, 1);
   }
 
-  calcProgress(){
-    let milestones = (100 / this.taskSteps.length).toFixed(2);
+  // calcProgress(){
+  //   let milestones = (100 / this.taskSteps.length).toFixed(2);
 
-    const doneSteps = this.taskSteps.filter((step) => step.status === true);
+  //   const doneSteps = this.taskSteps.filter((step) => step.status === true);
 
-    this.progress = Math.ceil(doneSteps.length * milestones);
-  }
+  //   this.progress = Math.ceil(doneSteps.length * milestones);
+  // }
 }

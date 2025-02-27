@@ -17,14 +17,14 @@ body {
 .project-wrapper {
   width: 100%;
   height: min-content;
-  padding: 15px 0;
+  padding: 15px;
   border: 2px solid black;
 }
 .project-header,
 .task-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .task-header {
   width: 90%;
@@ -32,6 +32,10 @@ body {
 .hidden > .project-body,
 .hidden > .task-body {
   display: none;
+}
+.project-dueDate,
+.task-progress {
+  margin-left: auto;
 }
 li {
   display: flex;
