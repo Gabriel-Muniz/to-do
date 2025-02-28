@@ -41,3 +41,7 @@ li {
   display: flex;
   gap: 1em;
 }
+.project-tasks-container {
+  display: flex;
+  flex-direction: column;
+}

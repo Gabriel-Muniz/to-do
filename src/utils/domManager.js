@@ -8,6 +8,7 @@ export function attachEventsToModules(){
       const parent = e.currentTarget.parentNode;
 
       parent.classList.toggle('hidden');
+      console.log(e.currentTarget.parentNode);
     })
   })
 
@@ -19,3 +20,4 @@ export function attachEventsToModules(){
     })
   })
 }
+

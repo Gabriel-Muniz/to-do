@@ -1,7 +1,7 @@
 import { Step } from "./models/Step";
 import { Project } from "./models/Project";
 import { Task } from "./models/Task";
-import { createProjectMainSection } from "./modules/projectView.js";
+import { renderProjectSidebar, renderProjectMainSection } from "./modules/projectView.js";
 import { attachEventsToModules } from "./utils/domManager.js";
 import "./styles/reset.css"
 import "./styles/main.css"
@@ -47,7 +47,8 @@ const project2 = new Project(
 let projects = [];
 projects.push(project1, project2);
 
-createProjectMainSection(projects);
+renderProjectSidebar(projects);
+renderProjectMainSection(project1);
 
 attachEventsToModules()
 

@@ -5,6 +5,8 @@ export function renderStep(step) {
 
   const stepStatus = clone.querySelector('input[type="checkbox"');
 
+  stepStatus.checked = (step.status) ? true: false; 
+
   const stepTitle = clone.querySelector('.step-title');
 
   stepTitle.textContent = step.title;

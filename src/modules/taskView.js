@@ -1,6 +1,6 @@
 import { renderStep } from "./stepView";
 
-export function renderTaskMainSection(task) {
+export function renderTaskSidebar(task) {
   const template = document.getElementById('task-template-main');
 
 
