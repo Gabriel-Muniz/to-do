@@ -54,7 +54,7 @@ export function renderProjectMainSection(project) {
   const descriptionInput = document.createElement('div');
   descriptionInput.setAttribute('contenteditable', 'true');
   descriptionInput.setAttribute('spellcheck', 'false');
-  descriptionInput.classList.add('project-description-edit')
+  descriptionInput.classList.add('project-edit-description')
   descriptionInput.textContent = project.description;
 
   const taskWrapper = document.createElement('div');
