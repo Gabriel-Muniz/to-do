@@ -6,9 +6,13 @@ export function renderProjectSidebar(projects) {
 
   const sidebar = document.querySelector('.sidebar');
 
-  projects.forEach(project => {
+  projects.forEach((project, index) => {
     const clone = document.importNode(template.content, true);
 
+    const projectWrapper = clone.querySelector('.project-wrapper');
+
+    projectWrapper.setAttribute('data-pj-index', `${index}`)
+    
     const projectTitle = clone.querySelector('.project-title');
 
     const projectDueDate = clone.querySelector('.project-dueDate');
@@ -33,48 +37,59 @@ export function renderProjectMainSection(project) {
   const mainSection = document.querySelector('.main-section');
 
   const projectMainWrapper = document.createElement('div');
-
   projectMainWrapper.classList.add('project-main-wrapper');
 
-  const titleInput = document.createElement('input');
-  titleInput.setAttribute('type', 'text');
-  titleInput.value = project.title;
+  const titleInput = document.createElement('div');
+  titleInput.setAttribute('contenteditable', 'true');
+  titleInput.setAttribute('spellcheck', 'false');
+  titleInput.classList.add('project-edit-title');
+  titleInput.textContent = project.title;
 
-  const dateInput = document.createElement('input');
-  dateInput.setAttribute('type', 'date');
+  const dateInput = document.createElement('div');
+  dateInput.setAttribute('contenteditable', 'true')
+  dateInput.setAttribute('spellcheck', 'false')
+  dateInput.classList.add('project-edit-dueDate');
+  dateInput.textContent = project.dueDate;
 
-  const descriptionInput = document.createElement('textarea');
-  descriptionInput.value = project.description;
+  const descriptionInput = document.createElement('div');
+  descriptionInput.setAttribute('contenteditable', 'true');
+  descriptionInput.setAttribute('spellcheck', 'false');
+  descriptionInput.classList.add('project-description-edit')
+  descriptionInput.textContent = project.description;
 
-  const taskContainer = document.createElement('div');
-  taskContainer.classList.add('project-tasks-container')
+  const taskWrapper = document.createElement('div');
+  taskWrapper.classList.add('project-task-wrapper');
+
+  projectMainWrapper.append(titleInput, dateInput, descriptionInput, taskWrapper);
 
   project.projectTasks.forEach(task => {
-    const taskInputTitle = document.createElement('input');
-    taskInputTitle.setAttribute('type', 'text');
-    taskInputTitle.value = task.title;
+    const taskTitleInput = document.createElement('div');
+    taskTitleInput.setAttribute('contenteditable', 'true');
+    taskTitleInput.setAttribute('spellcheck', 'false');
+    taskTitleInput.classList.add('task-edit-title');
+    taskTitleInput.textContent = task.title;
 
-    taskContainer.append(taskInputTitle);
+    taskWrapper.append(taskTitleInput);
 
     task.taskSteps.forEach(step => {
-      const stepWrapper = document.createElement('div');
-      stepWrapper.classList.add('step-wrapper');
-      const stepCheckbox = document.createElement('input');
-      stepCheckbox.setAttribute('type', 'checkbox')
-      stepCheckbox.checked = (step.status) ? true: false;
+      const stepRow = document.createElement('div');
+      stepRow.classList.add('step-row');
 
-      const stepInputTitle = document.createElement('input');
-      stepInputTitle.setAttribute('type', 'text');
-      stepInputTitle.value = step.title
+      const stepStatusInput = document.createElement('input');
+      stepStatusInput.setAttribute('type', 'checkbox');
+      stepStatusInput.checked = (step.status == true ? true : false)
 
-      stepWrapper.append(stepCheckbox, stepInputTitle);
+      const stepTitleInput = document.createElement('div');
+      stepTitleInput.setAttribute('contenteditable', 'true');
+      stepTitleInput.setAttribute('spellcheck', 'false');
+      stepTitleInput.classList.add('step-edit-title');
+      stepTitleInput.textContent = step.title;
 
-      taskContainer.append(stepWrapper)
+      stepRow.append(stepStatusInput, stepTitleInput)
+      taskWrapper.append(stepRow);
     })
-
   })
 
-  projectMainWrapper.append(titleInput, dateInput, descriptionInput, taskContainer);
-
   mainSection.append(projectMainWrapper)
+  
 }

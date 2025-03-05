@@ -48,11 +48,6 @@ let projects = [];
 projects.push(project1, project2);
 
 renderProjectSidebar(projects);
-renderProjectMainSection(project1);
+renderProjectMainSection(project2);
 
 attachEventsToModules()
-
-console.log(project1._title);
-project1._title = 'Teste de Underline!';
-console.log(project1.title)
-

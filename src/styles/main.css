@@ -24,6 +24,7 @@ body {
 .task-header {
   display: flex;
   align-items: center;
+  cursor: pointer;
   /* justify-content: space-between; */
 }
 .task-header {
