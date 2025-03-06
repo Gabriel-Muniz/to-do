@@ -5,6 +5,7 @@ export function renderProjectSidebar(projects) {
 
   const sidebar = document.querySelector('.sidebar');
 
+
   projects.forEach((project, index) => {
     const clone = document.importNode(template.content, true);
 
@@ -19,14 +20,16 @@ export function renderProjectSidebar(projects) {
     const projectDescription = clone.querySelector('.project-description');
 
     const projectBody = clone.querySelector('.project-body');
-    
-    project.projectTasks.forEach(task => {
+
+
+    project._projectTasks.forEach(task => {
+
       projectBody.append(renderTaskSidebar(task));
     })
 
-    projectTitle.textContent = project.title;
-    projectDueDate.textContent = project.dueDate;
-    projectDescription.textContent = project.description;
+    projectTitle.textContent = project._title;
+    projectDueDate.textContent = project._dueDate;
+    projectDescription.textContent = project._description;
 
     sidebar.append(clone)
   });

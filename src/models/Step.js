@@ -22,7 +22,7 @@ export class Step {
 
   logStep() {
     console.log(`
-    
+
       ----- ${this.title} -----
 
       Status: ${this.status}

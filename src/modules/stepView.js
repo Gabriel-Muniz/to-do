@@ -9,7 +9,7 @@ export function renderStep(step) {
 
   const stepTitle = clone.querySelector('.step-title');
 
-  stepTitle.textContent = step.title;
+  stepTitle.textContent = step._title;
   // taskProgress.textContent = task.progress;
 
   // console.log(clone);

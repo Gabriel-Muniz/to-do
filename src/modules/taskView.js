@@ -16,8 +16,8 @@ export function renderTaskSidebar(task) {
     taskSteps.append(renderStep(step))
   });
 
-  taskTitle.textContent = task.title;
-  taskProgress.textContent = `${task.progress}%`;
+  taskTitle.textContent = task._title;
+  taskProgress.textContent = `${task._progress}%`;
 
   return clone;
 
