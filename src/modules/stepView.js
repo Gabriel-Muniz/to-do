@@ -12,7 +12,7 @@ export function renderStep(step) {
   stepTitle.textContent = step.title;
   // taskProgress.textContent = task.progress;
 
-  console.log(clone);
+  // console.log(clone);
 
   return clone;
 

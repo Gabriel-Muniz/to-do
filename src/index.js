@@ -49,5 +49,4 @@ projects.push(project1, project2);
 
 renderProjectSidebar(projects);
 renderProjectMainSection(project2);
-
 attachEventsToModules()

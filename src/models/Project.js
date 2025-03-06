@@ -45,7 +45,7 @@ export class Project {
 
   set projectTasks(newProjectTasks){
     if(Array.isArray(newProjectTasks)){
-      this.projectTasks = newProjectTasks;
+      this._projectTasks = newProjectTasks;
     }
   }
 

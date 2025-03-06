@@ -61,12 +61,4 @@ export class Task {
 
     this.taskSteps.splice(stepIndex, 1);
   }
-
-  // calcProgress(){
-  //   let milestones = (100 / this.taskSteps.length).toFixed(2);
-
-  //   const doneSteps = this.taskSteps.filter((step) => step.status === true);
-
-  //   this.progress = Math.ceil(doneSteps.length * milestones);
-  // }
 }

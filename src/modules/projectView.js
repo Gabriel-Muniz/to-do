@@ -1,4 +1,3 @@
-import { renderStep } from "./stepView";
 import { renderTaskSidebar } from "./taskView";
 
 export function renderProjectSidebar(projects) {
@@ -12,7 +11,7 @@ export function renderProjectSidebar(projects) {
     const projectWrapper = clone.querySelector('.project-wrapper');
 
     projectWrapper.setAttribute('data-pj-index', `${index}`)
-    
+
     const projectTitle = clone.querySelector('.project-title');
 
     const projectDueDate = clone.querySelector('.project-dueDate');
@@ -20,7 +19,7 @@ export function renderProjectSidebar(projects) {
     const projectDescription = clone.querySelector('.project-description');
 
     const projectBody = clone.querySelector('.project-body');
-
+    
     project.projectTasks.forEach(task => {
       projectBody.append(renderTaskSidebar(task));
     })
@@ -32,7 +31,7 @@ export function renderProjectSidebar(projects) {
     sidebar.append(clone)
   });
 }
-
+renderTaskSidebar
 export function renderProjectMainSection(project) {
   const mainSection = document.querySelector('.main-section');
 
@@ -43,17 +42,20 @@ export function renderProjectMainSection(project) {
   titleInput.setAttribute('contenteditable', 'true');
   titleInput.setAttribute('spellcheck', 'false');
   titleInput.classList.add('project-edit-title');
+  titleInput.dataset.input = 'title';
   titleInput.textContent = project.title;
 
   const dateInput = document.createElement('div');
   dateInput.setAttribute('contenteditable', 'true')
   dateInput.setAttribute('spellcheck', 'false')
+  dateInput.dataset.input = 'dueDate';
   dateInput.classList.add('project-edit-dueDate');
   dateInput.textContent = project.dueDate;
 
   const descriptionInput = document.createElement('div');
   descriptionInput.setAttribute('contenteditable', 'true');
   descriptionInput.setAttribute('spellcheck', 'false');
+  descriptionInput.dataset.input = 'description';
   descriptionInput.classList.add('project-edit-description')
   descriptionInput.textContent = project.description;
 
@@ -66,7 +68,9 @@ export function renderProjectMainSection(project) {
     const taskTitleInput = document.createElement('div');
     taskTitleInput.setAttribute('contenteditable', 'true');
     taskTitleInput.setAttribute('spellcheck', 'false');
+    taskTitleInput.dataset.input = 'title';
     taskTitleInput.classList.add('task-edit-title');
+
     taskTitleInput.textContent = task.title;
 
     taskWrapper.append(taskTitleInput);
@@ -90,6 +94,12 @@ export function renderProjectMainSection(project) {
     })
   })
 
+  projectMainWrapper.childNodes.forEach(child => {
+    child.addEventListener('keyup', (e) => {
+      project[`${child.dataset.input}`] = child.textContent;
+    })
+  })
+
   mainSection.append(projectMainWrapper)
-  
+
 }
