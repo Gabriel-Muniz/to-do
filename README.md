@@ -2,5 +2,5 @@
 
 **What to-do next**
 
-- Aplly localStorage
+- ~~Aplly localStorage~~
 - Update sidebar and mainSection renders onchange
