@@ -4,3 +4,4 @@
 
 - ~~Aplly localStorage~~
 - Update sidebar and mainSection renders onchange
+- Load mainsection project on sidebar project click
