@@ -10,9 +10,12 @@ export function attachEventsToModules() {
     project.addEventListener('click', (e) => {
       const parent = e.currentTarget.parentNode;
 
-      parent.classList.toggle('hidden');      
+      parent.classList.toggle('hidden');
 
-      renderProjectMainSection(projectsLocalStore[parent.dataset.pjIndex])
+      parent.addEventListener('click', () => {
+        renderProjectMainSection(projectsLocalStore[parent.dataset.pjIndex])
+
+      })
 
       console.log(parent.dataset.pjIndex)
 

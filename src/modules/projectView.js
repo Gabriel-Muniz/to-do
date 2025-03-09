@@ -34,7 +34,6 @@ export function renderProjectSidebar(projects) {
     sidebar.append(clone)
   });
 }
-renderTaskSidebar
 export function renderProjectMainSection(project) {
   const mainSection = document.querySelector('.main-section');
   
