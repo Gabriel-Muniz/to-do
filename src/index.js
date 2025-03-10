@@ -53,4 +53,5 @@ if (!localStorage.getItem('projectsString')) {
 const parsedProjects = JSON.parse(localStorage.getItem('projectsString'))
 
 renderProjectSidebar(parsedProjects);
+renderProjectMainSection(parsedProjects[0], 0);
 attachEventsToModules()

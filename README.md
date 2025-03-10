@@ -8,3 +8,8 @@
 - [ ] Style main section projects
 - [ ] Work on Dates
 - [ ] Make code more readable
+
+## FAZENDO
+
+Two way binding
+~~Renderização de projetos com o index como data, para facilitar a edição do projeto~~

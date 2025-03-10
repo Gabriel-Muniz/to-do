@@ -24,7 +24,7 @@ export function renderProjectSidebar(projects) {
 
     project._projectTasks.forEach(task => {
 
-      projectBody.append(renderTaskSidebar(task));
+      projectBody.append(renderTaskSidebar(task, index));
     })
 
     projectTitle.textContent = project._title;
@@ -34,13 +34,14 @@ export function renderProjectSidebar(projects) {
     sidebar.append(clone)
   });
 }
-export function renderProjectMainSection(project) {
+export function renderProjectMainSection(project, index) {
   const mainSection = document.querySelector('.main-section');
   
   mainSection.innerHTML = '';
 
   const projectMainWrapper = document.createElement('div');
   projectMainWrapper.classList.add('project-main-wrapper');
+  projectMainWrapper.setAttribute('data-pj-index', `${index}`)
 
   const titleInput = document.createElement('div');
   titleInput.setAttribute('contenteditable', 'true');
@@ -97,13 +98,6 @@ export function renderProjectMainSection(project) {
       taskWrapper.append(stepRow);
     })
   })
-
-  projectMainWrapper.childNodes.forEach(child => {
-    child.addEventListener('keyup', (e) => {
-      project[`${child.dataset.input}`] = child.textContent;
-    })
-  })
-
   mainSection.append(projectMainWrapper)
 
 }
