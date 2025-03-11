@@ -36,7 +36,7 @@ export function renderProjectSidebar(projects) {
 }
 export function renderProjectMainSection(project, index) {
   const mainSection = document.querySelector('.main-section');
-  
+
   mainSection.innerHTML = '';
 
   const projectMainWrapper = document.createElement('div');
@@ -47,6 +47,7 @@ export function renderProjectMainSection(project, index) {
   titleInput.setAttribute('contenteditable', 'true');
   titleInput.setAttribute('spellcheck', 'false');
   titleInput.classList.add('project-edit-title');
+  titleInput.classList.add('project');
   titleInput.dataset.input = 'title';
   titleInput.textContent = project._title;
 
@@ -55,6 +56,7 @@ export function renderProjectMainSection(project, index) {
   dateInput.setAttribute('spellcheck', 'false')
   dateInput.dataset.input = 'dueDate';
   dateInput.classList.add('project-edit-dueDate');
+  dateInput.classList.add('project');
   dateInput.textContent = project._dueDate;
 
   const descriptionInput = document.createElement('div');
@@ -62,6 +64,7 @@ export function renderProjectMainSection(project, index) {
   descriptionInput.setAttribute('spellcheck', 'false');
   descriptionInput.dataset.input = 'description';
   descriptionInput.classList.add('project-edit-description')
+  descriptionInput.classList.add('project')
   descriptionInput.textContent = project._description;
 
   const taskWrapper = document.createElement('div');
@@ -69,20 +72,23 @@ export function renderProjectMainSection(project, index) {
 
   projectMainWrapper.append(titleInput, dateInput, descriptionInput, taskWrapper);
 
-  project._projectTasks.forEach(task => {
+  project._projectTasks.forEach((task, taskIndex) => {
     const taskTitleInput = document.createElement('div');
     taskTitleInput.setAttribute('contenteditable', 'true');
+    taskTitleInput.setAttribute('data-tk-index', `${taskIndex}`);
     taskTitleInput.setAttribute('spellcheck', 'false');
     taskTitleInput.dataset.input = 'title';
     taskTitleInput.classList.add('task-edit-title');
+    taskTitleInput.classList.add('task');
 
     taskTitleInput.textContent = task._title;
 
     taskWrapper.append(taskTitleInput);
 
-    task.taskSteps.forEach(step => {
+    task._taskSteps.forEach((step, stepIndex) => {
       const stepRow = document.createElement('div');
       stepRow.classList.add('step-row');
+      stepRow.setAttribute('data-st-index', `${stepIndex}`)
 
       const stepStatusInput = document.createElement('input');
       stepStatusInput.setAttribute('type', 'checkbox');
@@ -92,6 +98,7 @@ export function renderProjectMainSection(project, index) {
       stepTitleInput.setAttribute('contenteditable', 'true');
       stepTitleInput.setAttribute('spellcheck', 'false');
       stepTitleInput.classList.add('step-edit-title');
+      stepTitleInput.classList.add('step');
       stepTitleInput.textContent = step._title;
 
       stepRow.append(stepStatusInput, stepTitleInput)

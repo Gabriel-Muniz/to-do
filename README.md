@@ -3,7 +3,7 @@
 **What to-do next**
 
 - [x] ~~Aplly localStorage~~
-- [ ] Update sidebar and mainSection renders onchange
+- [ ] Update sidebar and mainSection renders onchange -> almost there
 - [x] ~~Load mainsection project on sidebar project click~~
 - [ ] Style main section projects
 - [ ] Work on Dates
@@ -11,5 +11,5 @@
 
 ## FAZENDO
 
-Two way binding
-~~Renderização de projetos com o index como data, para facilitar a edição do projeto~~
+Aplicando Two way biding nas tasks e nos steps.
+indexar os tasks e steps

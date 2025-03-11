@@ -15,11 +15,32 @@ export function attachEventsToModules() {
 
   mainSection.addEventListener('keyup', (e) => {
     const inEdit = e.target.closest('[data-input]');
-    const projectIndex = e.target.parentNode.dataset.pjIndex;
-    const currentProject = projectsLocalStore[projectIndex]
-    currentProject[`_${inEdit.dataset.input}`] = inEdit.textContent;
 
-    localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore))
+    if (inEdit) {
+      if (inEdit.classList.contains('project')) {
+        console.log(inEdit.classList.contains(`project`))
+        const projectIndex = e.target.parentNode.dataset.pjIndex;
+        const currentProject = projectsLocalStore[projectIndex]
+        currentProject[`_${inEdit.dataset.input}`] = inEdit.textContent;
+
+        console.log(e.target);
+      }
+
+      if (inEdit.classList.contains('task')) {
+        const project = e.target.closest('.project-main-wrapper').dataset.pjIndex;
+
+        const task = e.target.dataset.tkIndex;
+        const currentTask = projectsLocalStore[`${project}`]._projectTasks[`${task}`];
+
+        currentTask[`_${inEdit.dataset.input}`] = inEdit.textContent;
+        
+        
+        
+
+      }
+      localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore))
+    }
+
 
 
   })

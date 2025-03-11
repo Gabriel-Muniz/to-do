@@ -1,9 +1,9 @@
 export class Task {
   constructor(title, dueDate, progress = 0, taskSteps = []) {
-    this.title = title;
-    this.dueDate = dueDate;
-    this.progress = progress;
-    this.taskSteps = taskSteps;
+    this._title = title;
+    this._dueDate = dueDate;
+    this._progress = progress;
+    this._taskSteps = taskSteps;
   }
 
   get title(){

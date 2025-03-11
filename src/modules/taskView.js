@@ -12,7 +12,7 @@ export function renderTaskSidebar(task) {
 
   const taskSteps = clone.querySelector('.task-steps');
 
-  task.taskSteps.forEach(step => {
+  task._taskSteps.forEach(step => {
     taskSteps.append(renderStep(step))
   });
 
