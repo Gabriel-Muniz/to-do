@@ -67,21 +67,21 @@ export function renderProjectMainSection(project, index) {
   descriptionInput.classList.add('project')
   descriptionInput.textContent = project._description;
 
-  const taskWrapper = document.createElement('div');
-  taskWrapper.classList.add('project-task-wrapper');
-
-  projectMainWrapper.append(titleInput, dateInput, descriptionInput, taskWrapper);
+  projectMainWrapper.append(titleInput, dateInput, descriptionInput);
 
   project._projectTasks.forEach((task, taskIndex) => {
     const taskTitleInput = document.createElement('div');
     taskTitleInput.setAttribute('contenteditable', 'true');
-    taskTitleInput.setAttribute('data-tk-index', `${taskIndex}`);
     taskTitleInput.setAttribute('spellcheck', 'false');
     taskTitleInput.dataset.input = 'title';
     taskTitleInput.classList.add('task-edit-title');
     taskTitleInput.classList.add('task');
 
     taskTitleInput.textContent = task._title;
+
+    const taskWrapper = document.createElement('div');
+    taskWrapper.classList.add('project-task-wrapper');
+    taskWrapper.setAttribute('data-tk-index', `${taskIndex}`);
 
     taskWrapper.append(taskTitleInput);
 
@@ -97,6 +97,7 @@ export function renderProjectMainSection(project, index) {
       const stepTitleInput = document.createElement('div');
       stepTitleInput.setAttribute('contenteditable', 'true');
       stepTitleInput.setAttribute('spellcheck', 'false');
+      stepTitleInput.setAttribute('data-input', 'title');
       stepTitleInput.classList.add('step-edit-title');
       stepTitleInput.classList.add('step');
       stepTitleInput.textContent = step._title;
@@ -104,6 +105,7 @@ export function renderProjectMainSection(project, index) {
       stepRow.append(stepStatusInput, stepTitleInput)
       taskWrapper.append(stepRow);
     })
+    projectMainWrapper.append(taskWrapper)
   })
   mainSection.append(projectMainWrapper)
 
