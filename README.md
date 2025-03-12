@@ -3,16 +3,17 @@
 **What to-do next**
 
 - [x] ~~Aplly localStorage~~
-- [ ] Update sidebar and mainSection renders onchange -> almost there
+- [x] ~~Update sidebar and mainSection renders onchange -> almost there~~
+- [ ] Store user preferences on reloading (hidden and shown)
 - [x] ~~Load mainsection project on sidebar project click~~
 - [ ] Style main section projects
 - [ ] Work on Dates
 - [ ] Make code more readable
-- [x] Two way binding on Project, tasks and steps
+- [x] ~~Two way binding on Project, tasks and steps~~
 
 ## FAZENDO
 
 Aplicando Two way biding nas tasks e nos steps.
 indexar os tasks e steps
 
-Teste Deploy
+Entender melhor como funciona o git deploy

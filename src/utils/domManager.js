@@ -43,6 +43,9 @@ export function attachEventsToModules() {
         
 
       }
+
+      renderProjectSidebar(projectsLocalStore);
+
       localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore))
     }
   })

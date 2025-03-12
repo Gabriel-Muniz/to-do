@@ -5,6 +5,7 @@ export function renderProjectSidebar(projects) {
 
   const sidebar = document.querySelector('.sidebar');
 
+  sidebar.innerHTML = '';
 
   projects.forEach((project, index) => {
     const clone = document.importNode(template.content, true);
