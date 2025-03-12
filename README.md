@@ -8,6 +8,7 @@
 - [ ] Style main section projects
 - [ ] Work on Dates
 - [ ] Make code more readable
+- [x] Two way binding on Project, tasks and steps
 
 ## FAZENDO
 
