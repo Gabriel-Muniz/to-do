@@ -10,6 +10,29 @@ export function attachEventsToModules() {
 
   const mainSection = document.querySelector('.main-section');
 
+  const stepStatus = document.querySelectorAll('input[name="step-status-input"]')
+
+  console.log(stepStatus);
+
+  stepStatus.forEach(stepInput => {
+    stepInput.addEventListener('click', (e) => {
+      let project = e.target.closest('.project-main-wrapper').dataset.pjIndex;
+      let task = e.target.closest('.project-task-wrapper').dataset.tkIndex;
+
+      project = projectsLocalStore[project];
+      task = project._projectTasks[task];
+      const step = e.target.closest('.step-row').dataset.stIndex;
+
+      task._taskSteps[step]._status = !task._taskSteps[step]._status;
+      console.log(task._taskSteps[step]._status);
+
+      renderProjectSidebar(projectsLocalStore)
+
+      localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore))
+
+    })
+  })
+
   mainSection.addEventListener('keyup', (e) => {
     const inEdit = e.target.closest('[data-input]');
 
@@ -40,11 +63,9 @@ export function attachEventsToModules() {
         const currentStep = currentProject._projectTasks[`${parentTask}`]._taskSteps[e.target.parentNode.dataset.stIndex];
 
         currentStep._title = inEdit.textContent;
-        
-
       }
 
-      renderProjectSidebar(projectsLocalStore);
+      renderProjectSidebar(projectsLocalStore)
 
       localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore))
     }

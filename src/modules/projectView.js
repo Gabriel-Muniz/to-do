@@ -93,6 +93,7 @@ export function renderProjectMainSection(project, index) {
 
       const stepStatusInput = document.createElement('input');
       stepStatusInput.setAttribute('type', 'checkbox');
+      stepStatusInput.setAttribute('name', 'step-status-input')
       stepStatusInput.checked = (step._status == true ? true : false)
 
       const stepTitleInput = document.createElement('div');
