@@ -10,6 +10,9 @@
 - [ ] Work on Dates
 - [ ] Make code more readable
 - [x] ~~Two way binding on Project, tasks and steps~~
+- [x] ~~Change step status on click~~
+- [ ] Add project, step and task buttons
+- [ ] Delete project, step and task buttons
 
 ## FAZENDO
 
