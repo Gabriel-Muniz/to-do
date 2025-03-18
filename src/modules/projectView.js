@@ -80,13 +80,18 @@ export function renderProjectMainSection(project, index) {
 
     taskTitleInput.textContent = task._title;
 
+
+
     const taskWrapper = document.createElement('div');
     taskWrapper.classList.add('project-task-wrapper');
     taskWrapper.setAttribute('data-tk-index', `${taskIndex}`);
 
+
     taskWrapper.append(taskTitleInput);
 
-    task._taskSteps.forEach((step, stepIndex) => {
+
+
+    task.taskSteps.forEach((step, stepIndex) => {
       const stepRow = document.createElement('div');
       stepRow.classList.add('step-row');
       stepRow.setAttribute('data-st-index', `${stepIndex}`)
@@ -109,6 +114,11 @@ export function renderProjectMainSection(project, index) {
     })
     projectMainWrapper.append(taskWrapper)
   })
+  const addTaskButton = document.createElement('button');
+  addTaskButton.classList.add('btn-add-task');
+  addTaskButton.textContent = 'Add task +';
+  projectMainWrapper.append(addTaskButton);
+
   mainSection.append(projectMainWrapper)
 
 }

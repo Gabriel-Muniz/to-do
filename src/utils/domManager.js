@@ -12,7 +12,6 @@ export function attachEventsToModules() {
 
   const stepStatus = document.querySelectorAll('input[name="step-status-input"]')
 
-  console.log(stepStatus);
 
   stepStatus.forEach(stepInput => {
     stepInput.addEventListener('click', (e) => {
@@ -91,4 +90,33 @@ export function attachEventsToModules() {
       parent.classList.toggle('hidden');
     })
   })
+
+  mainSection.addEventListener('click', (e) => {
+    console.log(mainSection);
+
+    const addTask = e.target.closest('.btn-add-task')
+    if (!addTask) return;
+
+    const projectIndex = e.target.closest('.project-main-wrapper').dataset.pjIndex;
+
+    const projectTasks = projectsLocalStore[projectIndex]._projectTasks;
+
+    const taskPlaceholder = {
+      _title: 'Placeholder Task',
+      _dueDate: '2025-03-17',
+      _progress: 0,
+      taskSteps: [
+        {
+          _title: 'Click to change this step name',
+          _status: true,
+        }
+      ]
+    }
+    projectTasks.push(taskPlaceholder)
+    localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore));
+    
+    renderProjectSidebar(projectsLocalStore)
+    renderProjectMainSection(projectsLocalStore[projectIndex], projectIndex)
+  })
+
 }
