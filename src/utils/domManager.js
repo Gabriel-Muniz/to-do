@@ -92,31 +92,49 @@ export function attachEventsToModules() {
   })
 
   mainSection.addEventListener('click', (e) => {
-    console.log(mainSection);
 
+    const removeTask = e.target.closest('.btn-delete-task');
     const addTask = e.target.closest('.btn-add-task')
-    if (!addTask) return;
+    if (addTask) {
 
-    const projectIndex = e.target.closest('.project-main-wrapper').dataset.pjIndex;
+      const projectIndex = e.target.closest('.project-main-wrapper').dataset.pjIndex;
 
-    const projectTasks = projectsLocalStore[projectIndex]._projectTasks;
+      const projectTasks = projectsLocalStore[projectIndex]._projectTasks;
 
-    const taskPlaceholder = {
-      _title: 'Placeholder Task',
-      _dueDate: '2025-03-17',
-      _progress: 0,
-      taskSteps: [
-        {
-          _title: 'Click to change this step name',
-          _status: true,
-        }
-      ]
+      const taskPlaceholder = {
+        _title: 'Placeholder Task',
+        _dueDate: '2025-03-17',
+        _progress: 0,
+        taskSteps: [
+          {
+            _title: 'Click to change this step name',
+            _status: false,
+          }
+        ]
+      }
+
+      projectTasks.push(taskPlaceholder)
+      localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore));
+
+      renderProjectSidebar(projectsLocalStore)
+      renderProjectMainSection(projectsLocalStore[projectIndex], projectIndex)
     }
-    projectTasks.push(taskPlaceholder)
-    localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore));
-    
-    renderProjectSidebar(projectsLocalStore)
-    renderProjectMainSection(projectsLocalStore[projectIndex], projectIndex)
+
+    if(removeTask){
+      const projectIndex = e.target.closest('.project-main-wrapper').dataset.pjIndex;
+
+      const projectTasks = projectsLocalStore[projectIndex]._projectTasks;
+
+      const taskToRemove = e.target.closest('.project-task-wrapper').dataset.tkIndex;
+
+      projectTasks.splice(taskToRemove, 1);
+      renderProjectSidebar(projectsLocalStore)
+      renderProjectMainSection(projectsLocalStore[projectIndex], projectIndex)
+      localStorage.setItem('projectsString', JSON.stringify(projectsLocalStore));
+      console.log(taskToRemove);
+      
+    }
+
   })
 
 }

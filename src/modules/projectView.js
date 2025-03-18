@@ -86,8 +86,16 @@ export function renderProjectMainSection(project, index) {
     taskWrapper.classList.add('project-task-wrapper');
     taskWrapper.setAttribute('data-tk-index', `${taskIndex}`);
 
+    const taskHeader = document.createElement('div');
+    taskHeader.classList.add('project-task-header');
 
-    taskWrapper.append(taskTitleInput);
+    const deleteTaskButton = document.createElement('button');
+    deleteTaskButton.classList.add('btn-delete-task');
+    deleteTaskButton.textContent = 'Delete'
+
+    taskHeader.append(taskTitleInput, deleteTaskButton)
+
+    taskWrapper.append(taskHeader);
 
 
 
