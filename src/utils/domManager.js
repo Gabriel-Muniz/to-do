@@ -22,8 +22,7 @@ export function attachEventsToModules() {
       task = project._projectTasks[task];
       const step = e.target.closest('.step-row').dataset.stIndex;
 
-      task._taskSteps[step]._status = !task._taskSteps[step]._status;
-      console.log(task._taskSteps[step]._status);
+      task.taskSteps[step]._status = !task.taskSteps[step]._status;
 
       renderProjectSidebar(projectsLocalStore)
 
@@ -59,7 +58,9 @@ export function attachEventsToModules() {
 
       if (inEdit.classList.contains('step')) {
         const parentTask = e.target.closest('.project-task-wrapper').dataset.tkIndex;
-        const currentStep = currentProject._projectTasks[`${parentTask}`]._taskSteps[e.target.parentNode.dataset.stIndex];
+        console.log(parentTask);
+        
+        const currentStep = currentProject._projectTasks[`${parentTask}`].taskSteps[e.target.parentNode.dataset.stIndex];
 
         currentStep._title = inEdit.textContent;
       }
