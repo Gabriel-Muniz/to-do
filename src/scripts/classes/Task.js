@@ -1,9 +1,8 @@
 export class Task {
-    constructor(title, dueDate, status = false, taskSteps = []) {
+    constructor(title, dueDate, taskSteps = []) {
         this.id = crypto.randomUUID();
         this.title = title;
         this.dueDate = dueDate;
-        this.status = status;
         this.taskSteps = taskSteps;
     }
 
@@ -11,15 +10,15 @@ export class Task {
         const currentSteps = this.taskSteps;
         const taskMilestone = currentSteps.length;
         const completedSteps = currentSteps.filter(step => step.status === true).length;
-        return `${(completedSteps / taskMilestone * 100).toFixed(2)}%`;
+        const progressPercentage = (completedSteps / taskMilestone * 100).toFixed(2);
+        return Number(progressPercentage);
     }
 
     get taskLog() {
         const logString = `
             ==-- ${this.title} --==
             Due date: ${this.dueDate}
-            Status: ${this.status}
-            Progress: ${this.progress}
+            Progress: ${this.progress}%
             Steps: ${this.taskSteps.map(step => step.stepLog)}
         `
 
