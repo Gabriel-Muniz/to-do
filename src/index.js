@@ -1,15 +1,7 @@
 import "./styles/reset.css"
-import placeHolders from "./scripts/utils/projectsPlaceholder.json"
+import * as jsonManager from "./scripts/utils/JsonManager.js"
 
-import { Step } from "./scripts/classes/Step.js";
-import { Task } from "./scripts/classes/Task.js";
-import { Project } from "./scripts/classes/Project.js";
+const randomProject = jsonManager.getRandomPlaceholder();
+const testProject = jsonManager.instantiateProject(randomProject)
 
-const randomProject = placeHolders[Math.floor(Math.random() * placeHolders.length)];
-
-const project1 = new Project(randomProject.title, new Date(), randomProject.description, randomProject.priority, randomProject.projectTasks);
-
-console.log(project1.projectLog);
-console.log(project1);
-
-
+console.log(testProject.projectLog)
