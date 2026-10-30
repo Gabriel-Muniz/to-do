@@ -1,48 +1,246 @@
-{
-    "title": "Project title placeholder",
-    "dueDate": "",
-    "description": "Description placeholder",
-    "priority": 2,
-    "projectTasks": [
-        {
-            "title": "Task title placeholder",
-            "dueDate": "",
-            "taskSteps": [
-                {
-                    "title": "Step title placeholder",
-                    "status": false
-                },
-                {
-                    "title": "Step title placeholder 1",
-                    "status": true
-                },
-                {
-                    "title": "Step title placeholder 2",
-                    "status": false
-                }
-            ]
-        },
-        {
-            "title": "Task title placeholder 1",
-            "dueDate": "",
-            "taskSteps": [
-                {
-                    "title": "Step title placeholder 1",
-                    "status": true
-                },
-                {
-                    "title": "Step title placeholder 2",
-                    "status": true
-                },
-                {
-                    "title": "Step title placeholder 3",
-                    "status": true
-                },
-                {
-                    "title": "Step title placeholder 4",
-                    "status": true
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "title": "Website Redesign",
+        "dueDate": null,
+        "description": "Redesign the company website to improve user experience, performance, and visual identity.",
+        "priority": 1,
+        "projectTasks": [
+            {
+                "title": "Research and Planning",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Analyze competitor websites",
+                        "status": true
+                    },
+                    {
+                        "title": "Identify target audience",
+                        "status": true
+                    },
+                    {
+                        "title": "Define website requirements",
+                        "status": false
+                    }
+                ]
+            },
+            {
+                "title": "UI Development",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Create wireframes",
+                        "status": true
+                    },
+                    {
+                        "title": "Design homepage",
+                        "status": false
+                    },
+                    {
+                        "title": "Design mobile layouts",
+                        "status": false
+                    },
+                    {
+                        "title": "Review design with team",
+                        "status": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Personal Fitness Plan",
+        "dueDate": null,
+        "description": "Build a consistent fitness routine focused on strength, endurance, and healthy habits.",
+        "priority": 2,
+        "projectTasks": [
+            {
+                "title": "Workout Preparation",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Define fitness goals",
+                        "status": true
+                    },
+                    {
+                        "title": "Create weekly workout schedule",
+                        "status": true
+                    },
+                    {
+                        "title": "Prepare workout equipment",
+                        "status": false
+                    }
+                ]
+            },
+            {
+                "title": "Healthy Lifestyle",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Create meal plan",
+                        "status": true
+                    },
+                    {
+                        "title": "Track daily water intake",
+                        "status": false
+                    },
+                    {
+                        "title": "Record workout progress",
+                        "status": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Mobile App Development",
+        "dueDate": null,
+        "description": "Develop a productivity application that helps users organize tasks and manage their daily activities.",
+        "priority": 1,
+        "projectTasks": [
+            {
+                "title": "Backend Development",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Design database structure",
+                        "status": true
+                    },
+                    {
+                        "title": "Create API endpoints",
+                        "status": true
+                    },
+                    {
+                        "title": "Implement user authentication",
+                        "status": false
+                    },
+                    {
+                        "title": "Configure error handling",
+                        "status": false
+                    }
+                ]
+            },
+            {
+                "title": "Frontend Development",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Create dashboard screen",
+                        "status": true
+                    },
+                    {
+                        "title": "Implement task management",
+                        "status": false
+                    },
+                    {
+                        "title": "Add user profile screen",
+                        "status": false
+                    },
+                    {
+                        "title": "Test application navigation",
+                        "status": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Home Office Organization",
+        "dueDate": null,
+        "description": "Transform the home office into a comfortable, organized, and productive workspace.",
+        "priority": 3,
+        "projectTasks": [
+            {
+                "title": "Workspace Cleanup",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Organize desk",
+                        "status": true
+                    },
+                    {
+                        "title": "Sort documents",
+                        "status": true
+                    },
+                    {
+                        "title": "Remove unnecessary items",
+                        "status": true
+                    }
+                ]
+            },
+            {
+                "title": "Workspace Improvements",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Buy ergonomic chair",
+                        "status": false
+                    },
+                    {
+                        "title": "Improve desk lighting",
+                        "status": false
+                    },
+                    {
+                        "title": "Organize cables",
+                        "status": false
+                    },
+                    {
+                        "title": "Install monitor stand",
+                        "status": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Learn a New Language",
+        "dueDate": null,
+        "description": "Develop conversational skills in a new language through daily practice and structured learning.",
+        "priority": 2,
+        "projectTasks": [
+            {
+                "title": "Learning Fundamentals",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Choose learning materials",
+                        "status": true
+                    },
+                    {
+                        "title": "Learn basic vocabulary",
+                        "status": true
+                    },
+                    {
+                        "title": "Study basic grammar",
+                        "status": false
+                    },
+                    {
+                        "title": "Practice pronunciation",
+                        "status": false
+                    }
+                ]
+            },
+            {
+                "title": "Daily Practice",
+                "dueDate": null,
+                "taskSteps": [
+                    {
+                        "title": "Complete daily lessons",
+                        "status": false
+                    },
+                    {
+                        "title": "Watch videos in target language",
+                        "status": false
+                    },
+                    {
+                        "title": "Practice speaking for 15 minutes",
+                        "status": false
+                    },
+                    {
+                        "title": "Review learned vocabulary",
+                        "status": false
+                    }
+                ]
+            }
+        ]
+    }
+]

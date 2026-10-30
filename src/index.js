@@ -1,17 +1,15 @@
 import "./styles/reset.css"
+import placeHolders from "./scripts/utils/projectsPlaceholder.json"
 
 import { Step } from "./scripts/classes/Step.js";
 import { Task } from "./scripts/classes/Task.js";
 import { Project } from "./scripts/classes/Project.js";
 
-const stepTest = new Step('Step', true);
-const stepTest1 = new Step('Step 1', true);
-const stepTest2 = new Step('Step 2');
+const randomProject = placeHolders[Math.floor(Math.random() * placeHolders.length)];
 
-const taskTest = new Task('Task 1', new Date())
+const project1 = new Project(randomProject.title, new Date(), randomProject.description, randomProject.priority, randomProject.projectTasks);
 
-const projectTest = new Project('Project 1', new Date(), 'Test project', 3);
-projectTest.addTask(taskTest);
+console.log(project1.projectLog);
+console.log(project1);
 
-taskTest.addStep(stepTest, stepTest1, stepTest2);
-console.log(projectTest.projectLog);
+
