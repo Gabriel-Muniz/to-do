@@ -1,0 +1,48 @@
+{
+    "title": "Project title placeholder",
+    "dueDate": "",
+    "description": "Description placeholder",
+    "priority": 2,
+    "projectTasks": [
+        {
+            "title": "Task title placeholder",
+            "dueDate": "",
+            "taskSteps": [
+                {
+                    "title": "Step title placeholder",
+                    "status": false
+                },
+                {
+                    "title": "Step title placeholder 1",
+                    "status": true
+                },
+                {
+                    "title": "Step title placeholder 2",
+                    "status": false
+                }
+            ]
+        },
+        {
+            "title": "Task title placeholder 1",
+            "dueDate": "",
+            "taskSteps": [
+                {
+                    "title": "Step title placeholder 1",
+                    "status": true
+                },
+                {
+                    "title": "Step title placeholder 2",
+                    "status": true
+                },
+                {
+                    "title": "Step title placeholder 3",
+                    "status": true
+                },
+                {
+                    "title": "Step title placeholder 4",
+                    "status": true
+                }
+            ]
+        }
+    ]
+}
