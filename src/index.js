@@ -1,7 +1,11 @@
 import "./styles/reset.css"
 import * as jsonManager from "./scripts/utils/jsonManager.js"
+import * as storageManager from "./scripts/utils/storageManager.js";
 
 const randomProject = jsonManager.getRandomPlaceholder();
-const testProject = jsonManager.instantiateProject(randomProject)
+const initialProject = jsonManager.instantiateProject(randomProject)
 
-console.log(testProject.projectLog)
+
+if(!storageManager.getProjectsArray()){
+    storageManager.storeProjects(jsonManager.serializeProject(initialProject))
+}
