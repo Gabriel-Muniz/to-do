@@ -6,8 +6,5 @@ const randomProject = jsonManager.getRandomPlaceholder();
 const initialProject = jsonManager.instantiateProject(randomProject)
 
 
-if(!storageManager.getProjectsArray()){
-    storageManager.storeProjects(jsonManager.serializeProject(initialProject))
-}
 
-console.log(jsonManager.deserializeProject(storageManager.getProjectsArray()))
+console.log(storageManager.getStorage("projectsArray"))

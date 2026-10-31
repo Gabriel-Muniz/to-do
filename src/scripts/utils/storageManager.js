@@ -8,6 +8,9 @@ function checkStorage() {
         storage.removeItem(x);
         return true;
     } catch (e) {
+
+        alert("Your browser doesn't support localStorage! Sorry...");
+
         return (
             e instanceof DOMException &&
             e.name === "QuotaExceededError" &&
@@ -22,11 +25,7 @@ function getProjectsArray() {
 }
 
 function getStorage() {
-    if (checkStorage()) {
-        return localStorage;
-    } else {
-        alert("Your browser doesn't support localStorage! Sorry...");
-    }
+    if (checkStorage()) return localStorage 
 }
 
 function storeProjects(string) {
