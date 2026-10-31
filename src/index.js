@@ -1,5 +1,5 @@
 import "./styles/reset.css"
-import * as jsonManager from "./scripts/utils/JsonManager.js"
+import * as jsonManager from "./scripts/utils/jsonManager.js"
 
 const randomProject = jsonManager.getRandomPlaceholder();
 const testProject = jsonManager.instantiateProject(randomProject)

@@ -2,7 +2,7 @@ import { Step } from "../classes/Step.js";
 import { Task } from "../classes/Task.js";
 import { Project } from "../classes/Project.js";
 
-import placeHolders from "../utils/projectsPlaceholder.json"
+import placeHolders from "./projectsPlaceholder.json"
 
 function getRandomPlaceholder() {
     const randomIndex = Math.floor(Math.random() * placeHolders.length);
