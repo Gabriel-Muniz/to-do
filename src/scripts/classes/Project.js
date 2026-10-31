@@ -1,8 +1,8 @@
 export class Project {
-    constructor(title, dueDate = new Date(), description, priority = 2, projectTasks = []) {
+    constructor(title, dueDate, description, priority = 2, projectTasks = []) {
         this._id = crypto.randomUUID();
         this._title = title;
-        this._dueDate = dueDate;
+        this._dueDate = (dueDate === null) ? new Date() : dueDate;
         this._description = description;
         this._priority = priority;
         this._projectTasks = projectTasks;
