@@ -14,6 +14,10 @@ function serializeProject(project) {
     return JSON.stringify(project);
 }
 
+function deserializeProject(string) {
+    return JSON.parse(string)
+}
+
 function instantiateProject(project) {
 
     const parsedProject = (typeof project === 'string') ? JSON.parse(project) : project;
@@ -34,4 +38,4 @@ function instantiateProject(project) {
     return objProject;
 }
 
-export { getRandomPlaceholder, serializeProject, instantiateProject }
+export { getRandomPlaceholder, serializeProject, deserializeProject, instantiateProject }
