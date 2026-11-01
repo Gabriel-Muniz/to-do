@@ -1,3 +1,7 @@
+import * as jsonManager from "./jsonManager.js"
+
+let projectsArray = [];
+
 function checkStorage() {
     let storage;
 
@@ -20,24 +24,40 @@ function checkStorage() {
     }
 }
 
+(function initialLoadHandler() {
+    if (!getProjectsArray()) {
+        let initialProject = jsonManager.getRandomPlaceholder();
+        initialProject = jsonManager.instantiateProject(initialProject);
+        storeProjects(initialProject);
+
+        console.log(getProjectsArray());
+        const auxTest = jsonManager.deserializeProject(getProjectsArray()) 
+        console.log(auxTest)
+        auxTest.forEach(project => console.log(jsonManager.instantiateProject(project)))
+    }
+})()
+
+function deleteProject(projectToRemoveId) {
+    projectsArray.splice(projectsArray.findIndex(project => project.id === projectToRemoveId), 1)
+}
+
 function getProjectsArray() {
     return localStorage.getItem("projectsArray");
 }
 
 function getStorage() {
-    if (checkStorage()) return localStorage 
+    if (checkStorage()) return localStorage
 }
 
-function storeProjects(string) {
+function storeProjects(project) {
 
     if (!checkStorage()) return;
-    if (typeof string === 'undefined') return;
 
-    if (localStorage.getItem("projectsArray")) {
-        localStorage.removeItem("projectsArray");
-    }
+    projectsArray.push(project);
 
-    localStorage.setItem("projectsArray", string)
+    localStorage.removeItem("projectsArray");
+    localStorage.setItem("projectsArray", jsonManager.serializeProject(projectsArray))
+
 }
 
 export { checkStorage, getProjectsArray, storeProjects, getStorage }
