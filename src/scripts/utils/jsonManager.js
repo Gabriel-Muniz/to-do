@@ -22,14 +22,14 @@ function instantiateProject(project) {
 
     const parsedProject = (typeof project === 'string') ? JSON.parse(project) : project;
     const parsedTasks = parsedProject.projectTasks;
-    const objProject = new Project(parsedProject.title, parsedProject.dueDate, parsedProject.description, parsedProject.priority);
+    const objProject = new Project(parsedProject.id, parsedProject.title, parsedProject.dueDate, parsedProject.description, parsedProject.priority);
 
     parsedTasks.forEach(task => {
-        const newTask = new Task(task.title, task.dueDate, task.status);
+        const newTask = new Task(task.id, task.title, task.dueDate, task.status);
         const auxSteps = task.taskSteps;
 
         auxSteps.forEach(step => {
-            newTask.addStep(new Step(step.title, step.status))
+            newTask.addStep(new Step(step.id, step.title, step.status))
         })
 
         objProject.addTask(newTask);

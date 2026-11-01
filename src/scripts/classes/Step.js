@@ -1,6 +1,6 @@
 export class Step {
-    constructor(title, status = false) {
-        this.id = crypto.randomUUID();
+    constructor(id, title, status = false) {
+        this.id = (id === null) ? crypto.randomUUID() : id;
         this.title = title;
         this.status = status;
     }

@@ -1,6 +1,6 @@
 export class Task {
-    constructor(title, dueDate, taskSteps = []) {
-        this.id = crypto.randomUUID();
+    constructor(id, title, dueDate, taskSteps = []) {
+        this.id = (id === null) ? crypto.randomUUID() : id;
         this.title = title;
         this.dueDate = (dueDate === null) ? new Date() : dueDate;
         this.taskSteps = taskSteps;
