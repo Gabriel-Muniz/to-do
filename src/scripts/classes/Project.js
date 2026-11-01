@@ -8,12 +8,6 @@ export class Project {
         this.projectTasks = projectTasks;
     }
 
-    /* set dueDate(newDate) {
-        if (newDate == null) {
-            this.dueDate = new Date();
-        }
-    } */
-
     get projectLog() {
         const logString = `
         --== ${this.title} ==--
