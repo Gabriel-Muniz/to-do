@@ -6,5 +6,3 @@ const randomProject = jsonManager.getRandomPlaceholder();
 const initialProject = jsonManager.instantiateProject(randomProject)
 
 
-
-console.log(storageManager.getStorage("projectsArray"))

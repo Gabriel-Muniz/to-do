@@ -29,12 +29,14 @@ function checkStorage() {
         let initialProject = jsonManager.getRandomPlaceholder();
         initialProject = jsonManager.instantiateProject(initialProject);
         storeProjects(initialProject);
-
-        console.log(getProjectsArray());
-        const auxTest = jsonManager.deserializeProject(getProjectsArray()) 
-        console.log(auxTest)
-        auxTest.forEach(project => console.log(jsonManager.instantiateProject(project)))
+        return
     }
+
+    const currentProjects = jsonManager.deserializeProject(getProjectsArray());
+    projectsArray = currentProjects.map(project => {
+        return jsonManager.instantiateProject(project)
+    });
+
 })()
 
 function deleteProject(projectToRemoveId) {
