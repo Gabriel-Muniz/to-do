@@ -12,14 +12,30 @@ function renderProject(project) {
     const projectDescription = document.createElement("p");
     projectDescription.className = 'project-description';
 
+    const projectDueDateWrapper = document.createElement('div');
+    projectDueDateWrapper.className = 'project-dueDate';
+
+    projectDueDateWrapper.innerHTML = '<span class="day-span"></span> / <span class="month-span"></span> / <span class="year-span"></span>';
+    const auxDueDate = new Date(project.dueDate);
+
+    const dayDueDate = projectDueDateWrapper.querySelector('.day-span');
+    dayDueDate.textContent = format(auxDueDate, 'dd');
+
+    const monthDueDate = projectDueDateWrapper.querySelector('.month-span');
+    monthDueDate.textContent = format(auxDueDate, 'MM');
+
+    const yearDueDate = projectDueDateWrapper.querySelector('.year-span');
+    yearDueDate.textContent = format(auxDueDate, 'yyyy');
 
     projectTitle.textContent = project.title;
     projectDescription.textContent = project.description;
 
     projectWrapper.appendChild(projectTitle);
+    projectWrapper.appendChild(projectDueDateWrapper);
     projectWrapper.appendChild(projectDescription);
 
     const projectTaskList = document.createElement("ul");
+    projectTaskList.className = 'project-tasks'
     project.projectTasks.forEach(task => {
         projectTaskList.appendChild(renderTask(task));
     });
@@ -40,7 +56,7 @@ function renderTask(task) {
     taskDueDateWrapper.className = 'task-dueDate';
 
     const taskProgress = document.createElement('span')
-    taskProgress.className = 'task-status'
+    taskProgress.className = 'task-progress'
 
     taskTitle.textContent = task.title;
     taskProgress.textContent = `${task.progress}%`;
@@ -60,11 +76,12 @@ function renderTask(task) {
 
 
     taskWrapper.appendChild(taskTitle);
-    taskWrapper.appendChild(taskDueDateWrapper);
     taskWrapper.appendChild(taskProgress);
+    taskWrapper.appendChild(taskDueDateWrapper);
 
     const taskStepList = document.createElement('ul');
-    
+    taskStepList.className = 'task-steps'
+
     task.taskSteps.forEach(step => {
         taskStepList.append(renderStep(step));
     })
