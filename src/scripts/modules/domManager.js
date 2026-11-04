@@ -5,6 +5,7 @@ const bodyTest = document.querySelector('body');
 function renderProject(project) {
     const projectWrapper = document.createElement('div');
     projectWrapper.className = 'project-wrapper';
+    projectWrapper.dataset.projectId = project.id;
 
     const projectTitle = document.createElement('h2');
     projectTitle.className = 'project-title';
@@ -48,6 +49,7 @@ function renderProject(project) {
 function renderTask(task) {
     const taskWrapper = document.createElement('li');
     taskWrapper.className = 'task-wrapper';
+    taskWrapper.dataset.taskId = task.id;
 
     const taskTitle = document.createElement('h3');
     taskTitle.className = 'task-title';
@@ -93,14 +95,15 @@ function renderTask(task) {
 
 function renderStep(step) {
     const stepWrapper = document.createElement('li');
-    const stepTitle = document.createElement('h4');
+    stepWrapper.className = 'step-wrapper';
+    stepWrapper.dataset.stepId = step.id;
 
+    const stepTitle = document.createElement('h4');
 
     const stepStatus = document.createElement('input');
     stepStatus.className = 'step-status';
     stepStatus.type = 'checkbox'
 
-    stepWrapper.className = 'step-wrapper';
     stepTitle.className = 'step-title';
 
     stepTitle.textContent = step.title;
