@@ -3,6 +3,8 @@ import { format } from "date-fns";
 const bodyTest = document.querySelector('body');
 
 function renderProject(project) {
+    const editableFields = ['.project-title', '.project-description', '.day-span', '.month-span', '.year-span']
+
     const projectWrapper = document.createElement('div');
     projectWrapper.className = 'project-wrapper';
     projectWrapper.dataset.projectId = project.id;
@@ -43,10 +45,17 @@ function renderProject(project) {
 
     projectWrapper.append(projectTaskList)
 
+    editableFields.forEach(fieldSelector => {
+        projectWrapper.querySelector(fieldSelector)
+            .setAttribute('contenteditable', 'plaintext-only')
+    })
+
     bodyTest.append(projectWrapper);
 }
 
 function renderTask(task) {
+    const editableFields = ['.task-title', '.day-span', '.month-span', '.year-span',]
+
     const taskWrapper = document.createElement('li');
     taskWrapper.className = 'task-wrapper';
     taskWrapper.dataset.taskId = task.id;
@@ -88,6 +97,11 @@ function renderTask(task) {
         taskStepList.append(renderStep(step));
     })
 
+    editableFields.forEach(fieldSelector => {
+        taskWrapper.querySelector(fieldSelector)
+            .setAttribute('contentEditable', "plaintext-only");
+    })
+
     taskWrapper.appendChild(taskStepList)
 
     return taskWrapper;
@@ -98,7 +112,8 @@ function renderStep(step) {
     stepWrapper.className = 'step-wrapper';
     stepWrapper.dataset.stepId = step.id;
 
-    const stepTitle = document.createElement('h4');
+    const stepTitle = document.createElement('label');
+    stepTitle.setAttribute('contenteditable', "plaintext-only");
 
     const stepStatus = document.createElement('input');
     stepStatus.className = 'step-status';
