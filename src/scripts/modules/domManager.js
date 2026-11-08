@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { findProject, updateStorage } from "../utils/storageManager.js";
 
 const bodyTest = document.querySelector('body');
 
@@ -129,5 +130,44 @@ function renderStep(step) {
 
     return stepWrapper
 }
+
+(function attachEventListeners() {
+    let currentEditing;
+
+    // REMEMBER TO CHANGE BODYTEST
+    bodyTest.addEventListener('input', (e) => {
+        let auxProject = e.target.closest('.project-wrapper');
+        let auxTask = e.target.closest('.task-wrapper');
+        let auxStep = e.target.closest('.step-wrapper');
+
+        if (e.target.closest('.project-wrapper')) {
+            auxProject = auxProject.dataset.projectId;
+        }
+
+        if (e.target.closest('.task-wrapper')) {
+            auxTask = auxTask.dataset.taskId;
+        }
+
+        if (e.target.closest('.step-wrapper')) {
+            auxStep = auxStep.dataset.stepId;
+        }
+
+        currentEditing = findProject(auxProject, auxTask, auxStep); //Sends id's to return respective project, task or step
+
+        let currentField = e.target.classList;
+        currentField = currentField.value.split('-');
+        currentField = currentField[currentField.length - 1];
+
+        currentEditing[currentField] = (currentField == 'status') ? e.target.checked : e.target.textContent;
+
+        if (auxStep && currentField == 'status') {
+            const taskWrapper = document.querySelector(`[data-task-id="${auxTask}"`);
+            const taskProgress = taskWrapper.querySelector('.task-progress');
+            taskProgress.textContent = findProject(auxProject, auxTask).progress + '%';
+        };
+
+        updateStorage();
+    })
+})()
 
 export { renderProject };

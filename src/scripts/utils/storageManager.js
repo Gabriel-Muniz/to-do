@@ -62,4 +62,26 @@ function storeProjects(project) {
 
 }
 
-export { checkStorage, getProjectsArray, storeProjects, getStorage }
+function updateStorage() {
+    localStorage.removeItem("projectsArray");
+    localStorage.setItem("projectsArray", jsonManager.serializeProject(projectsArray))
+}
+
+function findProject(projectId, taskId, stepId) {
+    const auxProject = projectsArray.find(project => project.id === projectId);
+
+    if (taskId) {
+        const auxTask = auxProject.projectTasks.find(task => task.id === taskId);
+
+        if (stepId) {
+            const auxStep = auxTask.taskSteps.find(step => step.id === stepId);
+            return auxStep
+        }
+
+        return auxTask
+    }
+
+    return auxProject;
+}
+
+export { checkStorage, getProjectsArray, storeProjects, getStorage, findProject, updateStorage}

@@ -6,5 +6,11 @@ import * as domManager from "./scripts/modules/domManager.js"
 
 const randomProject = jsonManager.getRandomPlaceholder();
 const initialProject = jsonManager.instantiateProject(randomProject)
+let firstProject = storageManager.getProjectsArray();
+firstProject = jsonManager.deserializeProject(firstProject)[0]
+firstProject = jsonManager.instantiateProject(firstProject)
 
-domManager.renderProject(initialProject)
+// console.log(firstProject);
+// console.log(typeof firstProject.dueDate);
+
+domManager.renderProject(firstProject)
