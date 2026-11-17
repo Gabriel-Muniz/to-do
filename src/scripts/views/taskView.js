@@ -55,3 +55,29 @@ export function renderTask(task) {
 
     return taskWrapper;
 }
+
+export function renderTaskSidebar(task) {
+    const taskWrapper = document.createElement('div');
+    taskWrapper.className = 'task-wrapper-sidebar'
+
+    const taskTitle = document.createElement('h4');
+    taskTitle.className = 'task-title';
+    taskTitle.textContent = task.title;
+
+    const taskProgress = document.createElement('span');
+    taskProgress.className = 'task-progress';
+    taskProgress.textContent = task.progress + "%";
+
+    const taskStepList = document.createElement('ul');
+    taskStepList.className = 'task-steps'
+
+    task.taskSteps.forEach(step => {
+        taskStepList.append(renderStep(step, true));
+    })
+
+    taskWrapper.appendChild(taskTitle);
+    taskWrapper.appendChild(taskProgress);
+    taskWrapper.appendChild(taskStepList);
+
+    return taskWrapper;
+}

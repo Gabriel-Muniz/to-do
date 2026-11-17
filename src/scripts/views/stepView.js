@@ -1,5 +1,5 @@
 import { createDeleteBtn } from "../modules/domManager.js";
-export function renderStep(step) {
+export function renderStep(step, isSidebar = false) {
 
     const stepWrapper = document.createElement('li');
     stepWrapper.className = 'step-wrapper';
@@ -19,7 +19,9 @@ export function renderStep(step) {
 
     stepWrapper.appendChild(stepTitle);
     stepWrapper.appendChild(stepStatus);
-    stepWrapper.appendChild(createDeleteBtn());
+    if (!isSidebar) {
+        stepWrapper.appendChild(createDeleteBtn());
+    }
 
     return stepWrapper
 }

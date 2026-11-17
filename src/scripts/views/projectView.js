@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { renderTask } from "./taskView.js";
+import { renderTask, renderTaskSidebar } from "./taskView.js";
 
 export function renderProject(project) {
     const editableFields = ['.project-title', '.project-description', '.day-span', '.month-span', '.year-span']
@@ -50,4 +50,31 @@ export function renderProject(project) {
     })
 
     return projectWrapper;
+}
+
+export function renderProjectSidebar(project) {
+    const projectWrapper = document.createElement('div');
+    projectWrapper.className = 'project-wrapper-sidebar';
+    projectWrapper.dataset.id = project.id;
+
+    const projectTitle = document.createElement('h3');
+    projectTitle.className = 'project-title';
+    projectTitle.textContent = project.title;
+
+    const projectPriority = document.createElement('span')
+    projectPriority.className = 'project-priority';
+    projectPriority.textContent = project.priority;
+
+    const projectTaskList = document.createElement('ul');
+    projectTaskList.className = 'project-tasks';
+
+    project.projectTasks.forEach(task => {
+        projectTaskList.appendChild(renderTaskSidebar(task));
+    });
+
+    projectWrapper.appendChild(projectTitle);
+    projectWrapper.appendChild(projectPriority);
+    projectWrapper.appendChild(projectTaskList);
+
+    return projectWrapper
 }
