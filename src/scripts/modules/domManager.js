@@ -169,32 +169,12 @@ function removeElement(id) {
     }
 }
 
-(function attachEventListeners() {
+function fieldEditingEvent() {
     let currentEditing;
 
-    // REMEMBER TO CHANGE BODYTEST
-    deleteButtonEvent()
-
     bodyTest.addEventListener('input', (e) => {
-        let auxProject = e.target.closest('.project-wrapper');
-        let auxTask = e.target.closest('.task-wrapper');
-        let auxStep = e.target.closest('.step-wrapper');
-
-        if (e.target.closest('.project-wrapper')) {
-            auxProject = auxProject.dataset.id;
-        }
-
-        if (e.target.closest('.task-wrapper')) {
-            auxTask = auxTask.dataset.id;
-        }
-
-        if (e.target.closest('.step-wrapper')) {
-            auxStep = auxStep.dataset.id;
-        }
-
-        currentEditing = findProject(auxProject, auxTask, auxStep); //Sends id's to return respective project, task or step
-        console.log(currentEditing);
-
+        currentEditing = e.target.closest('[data-id]').dataset.id;
+        currentEditing = findProject(currentEditing);
 
         let currentField = e.target.classList;
         currentField = currentField.value.split('-');
@@ -202,14 +182,23 @@ function removeElement(id) {
 
         currentEditing[currentField] = (currentField == 'status') ? e.target.checked : e.target.textContent;
 
-        if (auxStep && currentField == 'status') {
-            const taskWrapper = document.querySelector(`[data-id="${auxTask}"`);
+        if (currentField == 'status') {
+            const taskWrapper = e.target.closest('.task-wrapper');
             const taskProgress = taskWrapper.querySelector('.task-progress');
-            taskProgress.textContent = findProject(auxProject, auxTask).progress + '%';
-        };
+            taskProgress.textContent = findProject(taskWrapper.dataset.id).progress + "%";
+        }
 
         updateStorage();
     })
+}
+
+(function attachEventListeners() {
+    let currentEditing;
+
+    // REMEMBER TO CHANGE BODYTEST
+    deleteButtonEvent()
+    fieldEditingEvent();
+
 })()
 
 export { renderProject };
