@@ -8,7 +8,7 @@ import { renderProject } from "./scripts/views/projectView.js";
 
 // const randomProject = jsonManager.getRandomPlaceholder();
 // const initialProject = jsonManager.instantiateProject(randomProject)
-let firstProject = storageManager.getProjectsArray();
+let firstProject = storageManager.getProjectsArraySerialized();
 firstProject = jsonManager.deserializeProject(firstProject)[0]
 firstProject = jsonManager.instantiateProject(firstProject)
 

@@ -25,25 +25,30 @@ function checkStorage() {
 }
 
 (function initialLoadHandler() {
-    if (!getProjectsArray()) {
+    if (!getProjectsArraySerialized()) {
         let initialProject = jsonManager.getRandomPlaceholder();
         initialProject = jsonManager.instantiateProject(initialProject);
         storeProjects(initialProject);
         return
     }
 
-    const currentProjects = jsonManager.deserializeProject(getProjectsArray());
+    const currentProjects = jsonManager.deserializeProject(getProjectsArraySerialized());
     projectsArray = currentProjects.map(project => {
         return jsonManager.instantiateProject(project)
     });
 
 })()
 
+
 function deleteProject(projectToRemoveId) {
     projectsArray.splice(projectsArray.findIndex(project => project.id === projectToRemoveId), 1)
 }
 
-function getProjectsArray() {
+function getProjectsArray(){
+    return projectsArray;
+}
+
+function getProjectsArraySerialized() {
     return localStorage.getItem("projectsArray");
 }
 
@@ -83,4 +88,4 @@ function findProject(id) {
     return null;
 }
 
-export { checkStorage, getProjectsArray, storeProjects, getStorage, findProject, updateStorage }
+export { checkStorage, getProjectsArray, getProjectsArraySerialized, storeProjects, getStorage, findProject, updateStorage }
