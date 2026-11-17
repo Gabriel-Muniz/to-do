@@ -150,7 +150,8 @@ function deleteButtonEvent() {
 
         const deleteTarget = e.target.parentElement;
         const parent = deleteTarget.parentElement.closest([`[data-id]`]);
-        const project = e.target.closest('.project-wrapper').dataset.id;        
+
+        removeElement(deleteTarget.dataset.id)
 
         let objParent = findProject(parent.dataset.id);
         objParent.removeItem(deleteTarget.dataset.id);
@@ -159,6 +160,13 @@ function deleteButtonEvent() {
 
     })
 
+}
+
+function removeElement(id) {
+    const elementToRemove = document.querySelector(`[data-id="${id}"]`);
+    if (elementToRemove.parentNode) {
+        elementToRemove.parentNode.removeChild(elementToRemove)
+    }
 }
 
 (function attachEventListeners() {
@@ -186,7 +194,7 @@ function deleteButtonEvent() {
 
         currentEditing = findProject(auxProject, auxTask, auxStep); //Sends id's to return respective project, task or step
         console.log(currentEditing);
-        
+
 
         let currentField = e.target.classList;
         currentField = currentField.value.split('-');
