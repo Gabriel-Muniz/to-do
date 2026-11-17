@@ -67,21 +67,20 @@ function updateStorage() {
     localStorage.setItem("projectsArray", jsonManager.serializeProject(projectsArray))
 }
 
-function findProject(projectId, taskId, stepId) {
-    const auxProject = projectsArray.find(project => project.id === projectId);
+function findProject(id) {
 
-    if (taskId) {
-        const auxTask = auxProject.projectTasks.find(task => task.id === taskId);
+    for (const project of projectsArray) {
+        if(project.id == id) return project
 
-        if (stepId) {
-            const auxStep = auxTask.taskSteps.find(step => step.id === stepId);
-            return auxStep
+        for (const task of project.projectTasks) {
+            if(task.id == id) return task;
+
+            for (const step of task.taskSteps) {
+                if(step.id == id) return step;
+            }
         }
-
-        return auxTask
     }
-
-    return auxProject;
+    return;
 }
 
-export { checkStorage, getProjectsArray, storeProjects, getStorage, findProject, updateStorage}
+export { checkStorage, getProjectsArray, storeProjects, getStorage, findProject, updateStorage }
