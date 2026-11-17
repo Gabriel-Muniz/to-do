@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
 
-const bodyTest = document.querySelector('body');
+const mainSection = document.querySelector('.main-section');
 
 function renderProject(project) {
     const editableFields = ['.project-title', '.project-description', '.day-span', '.month-span', '.year-span']
@@ -51,7 +51,7 @@ function renderProject(project) {
             .setAttribute('contenteditable', 'plaintext-only')
     })
 
-    bodyTest.append(projectWrapper);
+    mainSection.append(projectWrapper);
 }
 
 function renderTask(task) {
@@ -144,8 +144,8 @@ function createDeleteBtn() {
 }
 
 function deleteButtonEvent() {
-    // CHANCE BODYTEST
-    bodyTest.addEventListener('click', (e) => {
+    // CHANCE mainSection
+    mainSection.addEventListener('click', (e) => {
         if (!e.target.classList.contains('delete-btn')) return;
 
         const deleteTarget = e.target.parentElement;
@@ -172,7 +172,7 @@ function removeElement(id) {
 function fieldEditingEvent() {
     let currentEditing;
 
-    bodyTest.addEventListener('input', (e) => {
+    mainSection.addEventListener('input', (e) => {
         currentEditing = e.target.closest('[data-id]').dataset.id;
         currentEditing = findProject(currentEditing);
 
@@ -195,7 +195,7 @@ function fieldEditingEvent() {
 (function attachEventListeners() {
     let currentEditing;
 
-    // REMEMBER TO CHANGE BODYTEST
+    // REMEMBER TO CHANGE mainSection
     deleteButtonEvent()
     fieldEditingEvent();
 

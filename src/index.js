@@ -1,5 +1,6 @@
 import "./styles/reset.css"
 import "./styles/projects.css"
+import "./styles/home.css"
 import * as jsonManager from "./scripts/utils/jsonManager.js"
 import * as storageManager from "./scripts/utils/storageManager.js";
 import * as domManager from "./scripts/modules/domManager.js"

@@ -1,0 +1,16 @@
+body{
+    min-height: 100vh;
+    display: flex;
+}
+.sidebar{
+    background-color: bisque;
+    width: 25%;
+    height: inherit;
+}
+.main-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: rgb(95, 212, 212);
+}
