@@ -8,7 +8,7 @@ function renderProject(project) {
 
     const projectWrapper = document.createElement('div');
     projectWrapper.className = 'project-wrapper';
-    projectWrapper.dataset.projectId = project.id;
+    projectWrapper.dataset.id = project.id;
 
     const projectTitle = document.createElement('h2');
     projectTitle.className = 'project-title';
@@ -59,7 +59,7 @@ function renderTask(task) {
 
     const taskWrapper = document.createElement('li');
     taskWrapper.className = 'task-wrapper';
-    taskWrapper.dataset.taskId = task.id;
+    taskWrapper.dataset.id = task.id;
 
     const taskTitle = document.createElement('h3');
     taskTitle.className = 'task-title';
@@ -104,6 +104,7 @@ function renderTask(task) {
     })
 
     taskWrapper.appendChild(taskStepList)
+    taskWrapper.appendChild(createDeleteBtn())
 
     return taskWrapper;
 }
@@ -111,7 +112,7 @@ function renderTask(task) {
 function renderStep(step) {
     const stepWrapper = document.createElement('li');
     stepWrapper.className = 'step-wrapper';
-    stepWrapper.dataset.stepId = step.id;
+    stepWrapper.dataset.id = step.id;
 
     const stepTitle = document.createElement('label');
     stepTitle.setAttribute('contenteditable', "plaintext-only");
@@ -127,32 +128,65 @@ function renderStep(step) {
 
     stepWrapper.appendChild(stepTitle);
     stepWrapper.appendChild(stepStatus);
+    stepWrapper.appendChild(createDeleteBtn());
+
+
 
     return stepWrapper
+}
+
+function createDeleteBtn() {
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'X'
+
+    return deleteBtn;
+}
+
+function deleteButtonEvent() {
+    // CHANCE BODYTEST
+    bodyTest.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('delete-btn')) return;
+
+        const deleteTarget = e.target.parentElement;
+        const parent = deleteTarget.parentElement.closest([`[data-id]`]);
+        const project = e.target.closest('.project-wrapper').dataset.id;        
+
+        let objParent = findProject(parent.dataset.id);
+        objParent.removeItem(deleteTarget.dataset.id);
+
+        updateStorage();
+
+    })
+
 }
 
 (function attachEventListeners() {
     let currentEditing;
 
     // REMEMBER TO CHANGE BODYTEST
+    deleteButtonEvent()
+
     bodyTest.addEventListener('input', (e) => {
         let auxProject = e.target.closest('.project-wrapper');
         let auxTask = e.target.closest('.task-wrapper');
         let auxStep = e.target.closest('.step-wrapper');
 
         if (e.target.closest('.project-wrapper')) {
-            auxProject = auxProject.dataset.projectId;
+            auxProject = auxProject.dataset.id;
         }
 
         if (e.target.closest('.task-wrapper')) {
-            auxTask = auxTask.dataset.taskId;
+            auxTask = auxTask.dataset.id;
         }
 
         if (e.target.closest('.step-wrapper')) {
-            auxStep = auxStep.dataset.stepId;
+            auxStep = auxStep.dataset.id;
         }
 
         currentEditing = findProject(auxProject, auxTask, auxStep); //Sends id's to return respective project, task or step
+        console.log(currentEditing);
+        
 
         let currentField = e.target.classList;
         currentField = currentField.value.split('-');
@@ -161,7 +195,7 @@ function renderStep(step) {
         currentEditing[currentField] = (currentField == 'status') ? e.target.checked : e.target.textContent;
 
         if (auxStep && currentField == 'status') {
-            const taskWrapper = document.querySelector(`[data-task-id="${auxTask}"`);
+            const taskWrapper = document.querySelector(`[data-id="${auxTask}"`);
             const taskProgress = taskWrapper.querySelector('.task-progress');
             taskProgress.textContent = findProject(auxProject, auxTask).progress + '%';
         };

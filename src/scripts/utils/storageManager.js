@@ -80,7 +80,7 @@ function findProject(id) {
             }
         }
     }
-    return;
+    return null;
 }
 
 export { checkStorage, getProjectsArray, storeProjects, getStorage, findProject, updateStorage }
