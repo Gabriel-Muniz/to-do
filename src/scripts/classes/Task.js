@@ -33,7 +33,12 @@ export class Task {
         this.taskSteps.push(...step);
     }
 
-    removeStep(index) {
-        this.taskSteps.splice(index, 1)
+    removeStep(id) {
+        const auxSteps = this.taskSteps;
+        auxSteps.splice(auxSteps.findIndex(step => step.id === id), 1)
     };
+
+    removeItem(id){
+        this.removeStep(id);
+    }
 }

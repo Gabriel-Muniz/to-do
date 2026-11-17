@@ -23,7 +23,12 @@ export class Project {
         this.projectTasks.push(task);
     }
 
-    removeTask(index) {
-        this.projectTasks.splice(index, 1);
+    removeTask(id) {
+        const auxTasks = this.projectTasks;
+        auxTasks.splice(auxTasks.findIndex(task => task.id === id), 1)
+    }
+
+    removeItem(id) {
+        this.removeTask(id);
     }
 }
