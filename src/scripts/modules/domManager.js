@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
-import { getProjectsArray } from "../utils/storageManager.js"
+import { getRandomPlaceholder, instantiateProject } from "../utils/jsonManager.js";
+import { getProjectsArray, storeProjects } from "../utils/storageManager.js"
 import { renderProjectSidebar } from "../views/projectView.js";
 
 const mainSection = document.querySelector('.main-section');
@@ -74,9 +75,21 @@ function fieldEditingEvent() {
     })
 }
 
+function addNewProject() {
+    const addProjectBtn = document.querySelector('.add-project-btn');
+
+    addProjectBtn.addEventListener('click', (e) => {
+        const newProject = instantiateProject(getRandomPlaceholder());
+        storeProjects(newProject);
+        renderSidebar();
+    })
+
+}
+
 (function attachEventListeners() {
     deleteButtonEvent();
     fieldEditingEvent();
+    addNewProject();
 
     renderSidebar()
 
