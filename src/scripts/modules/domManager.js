@@ -1,5 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
+import { getProjectsArray } from "../utils/storageManager.js"
+import { renderProjectSidebar } from "../views/projectView.js";
 
 const mainSection = document.querySelector('.main-section');
 
@@ -26,6 +28,20 @@ function deleteButtonEvent() {
         updateStorage();
 
     })
+}
+
+function renderSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarProjectsContainer = document.createElement('div');
+    sidebarProjectsContainer.className = 'projectsContainer';
+    sidebarProjectsContainer.textContent = '';
+    const projectsArray = getProjectsArray();
+
+    projectsArray.forEach(project => {
+        sidebarProjectsContainer.appendChild(renderProjectSidebar(project));
+    })
+
+    sidebar.appendChild(sidebarProjectsContainer);
 }
 
 function removeElement(id) {
@@ -61,6 +77,9 @@ function fieldEditingEvent() {
 (function attachEventListeners() {
     deleteButtonEvent();
     fieldEditingEvent();
+
+    renderSidebar()
+
 })()
 
 export { createDeleteBtn };
