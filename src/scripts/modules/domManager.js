@@ -46,10 +46,15 @@ function renderSidebar() {
 }
 
 function removeElement(id) {
-    const elementToRemove = document.querySelector(`[data-id="${id}"]`);
-    if (elementToRemove.parentNode) {
-        elementToRemove.parentNode.removeChild(elementToRemove)
-    }
+    const elementToRemove = document.querySelectorAll(`[data-id="${id}"]`);
+
+    elementToRemove.forEach(element => {
+        if (element.parentNode){
+            console.log(element.parentNode);
+            element.parentNode.removeChild(element);
+        }
+    })
+
 }
 
 function fieldEditingEvent() {
