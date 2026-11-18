@@ -67,7 +67,9 @@ function removeElement(id) {
 function fieldEditingEvent() {
     let currentEditing;
 
-    mainSection.addEventListener('input', (e) => {
+    const body = document.querySelector('body');
+
+    body.addEventListener('input', (e) => {
         currentEditing = e.target.closest('[data-id]').dataset.id;
         currentEditing = findProject(currentEditing);
 
@@ -83,6 +85,7 @@ function fieldEditingEvent() {
             taskProgress.textContent = findProject(taskWrapper.dataset.id).progress + "%";
         }
 
+        renderSidebar();
         updateStorage();
     })
 }

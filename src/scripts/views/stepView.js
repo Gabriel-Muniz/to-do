@@ -6,7 +6,6 @@ export function renderStep(step, isSidebar = false) {
     stepWrapper.dataset.id = step.id;
 
     const stepTitle = document.createElement('label');
-    stepTitle.setAttribute('contenteditable', "plaintext-only");
 
     const stepStatus = document.createElement('input');
     stepStatus.className = 'step-status';
@@ -19,8 +18,10 @@ export function renderStep(step, isSidebar = false) {
 
     stepWrapper.appendChild(stepTitle);
     stepWrapper.appendChild(stepStatus);
+
     if (!isSidebar) {
         stepWrapper.appendChild(createDeleteBtn());
+        stepTitle.setAttribute('contenteditable', "plaintext-only");
     }
 
     return stepWrapper
