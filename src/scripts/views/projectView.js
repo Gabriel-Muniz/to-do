@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { renderTask, renderTaskSidebar } from "./taskView.js";
+import { createDeleteBtn } from "../modules/domManager.js";
 
 export function renderProject(project) {
     const editableFields = ['.project-title', '.project-description', '.day-span', '.month-span', '.year-span']
@@ -75,6 +76,7 @@ export function renderProjectSidebar(project) {
     projectWrapper.appendChild(projectTitle);
     projectWrapper.appendChild(projectPriority);
     projectWrapper.appendChild(projectTaskList);
+    projectWrapper.appendChild(createDeleteBtn());
 
     return projectWrapper
 }

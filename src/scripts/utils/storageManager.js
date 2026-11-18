@@ -88,4 +88,4 @@ function findProject(id) {
     return null;
 }
 
-export { checkStorage, getProjectsArray, getProjectsArraySerialized, storeProjects, getStorage, findProject, updateStorage }
+export { checkStorage, getProjectsArray, getProjectsArraySerialized, storeProjects, deleteProject, getStorage, findProject, updateStorage }

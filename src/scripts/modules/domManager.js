@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject } from "../utils/jsonManager.js";
-import { getProjectsArray, storeProjects } from "../utils/storageManager.js"
+import { getProjectsArray, storeProjects, deleteProject } from "../utils/storageManager.js"
 import { renderProjectSidebar } from "../views/projectView.js";
 
 const mainSection = document.querySelector('.main-section');
@@ -15,7 +15,9 @@ function createDeleteBtn() {
 }
 
 function deleteButtonEvent() {
-    mainSection.addEventListener('click', (e) => {
+    const body = document.querySelector('body');
+
+    body.addEventListener('click', (e) => {
         if (!e.target.classList.contains('delete-btn')) return;
 
         const deleteTarget = e.target.parentElement;
@@ -23,8 +25,12 @@ function deleteButtonEvent() {
 
         removeElement(deleteTarget.dataset.id)
 
-        let objParent = findProject(parent.dataset.id);
-        objParent.removeItem(deleteTarget.dataset.id);
+        if (!parent) {
+            deleteProject(deleteTarget.dataset.id)
+        } else {
+            let objParent = findProject(parent.dataset.id);
+            objParent.removeItem(deleteTarget.dataset.id);
+        }
 
         updateStorage();
 
