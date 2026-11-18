@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { createDeleteBtn } from "../modules/domManager.js";
+import { createDeleteBtn, createNewObjBtn } from "../modules/domManager.js";
 import { renderStep } from "./stepView.js";
 
 export function renderTask(task) {
@@ -51,6 +51,7 @@ export function renderTask(task) {
     })
 
     taskWrapper.appendChild(taskStepList)
+    taskWrapper.appendChild(createNewObjBtn('step'))
     taskWrapper.appendChild(createDeleteBtn())
 
     return taskWrapper;

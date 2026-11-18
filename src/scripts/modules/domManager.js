@@ -14,6 +14,14 @@ function createDeleteBtn() {
     return deleteBtn;
 }
 
+function createNewObjBtn(btnClass){
+    const newBtn = document.createElement('button');
+    newBtn.className = `add-btn new-${btnClass}`;
+    newBtn.textContent = '+';
+
+    return newBtn;
+}
+
 function deleteButtonEvent() {
     const body = document.querySelector('body');
 
@@ -41,7 +49,39 @@ function deleteButtonEvent() {
     })
 }
 
+function addButtonEvent(){
+    const body = document.querySelector('body');
 
+    body.addEventListener('click', (e) => {
+        if(!e.target.classList.contains('add-btn')) return;
+        
+        const parent = e.target.parentNode;
+        
+        if(parent.classList.contains('project-wrapper')){
+            const project = findProject(parent.dataset.id);
+            project.addTask(getRandomPlaceholder('task'));
+        }
+
+        if(parent.classList.contains('task-wrapper')){
+            const task = findProject(parent.dataset.id);
+            task.addStep(getRandomPlaceholder('step'));
+
+            updateTaskProgress();
+        }
+        
+        updateRenderedProject();
+        updateStorage();
+        renderSidebar();
+    })
+}
+
+function updateRenderedProject(){
+    const mainSection = document.querySelector('.main-section');
+    const currentRenderedProject = mainSection.querySelector('.project-wrapper').dataset.id;
+    mainSection.innerHTML = '';
+    mainSection.appendChild(renderProject(findProject(currentRenderedProject)));
+
+}
 
 function renderSidebar() {
     const sidebar = document.querySelector('.sidebar');
@@ -151,6 +191,7 @@ function addNewProject() {
 
 (function attachEventListeners() {
     deleteButtonEvent();
+    addButtonEvent();
     fieldEditingEvent();
     addNewProject();
     projectChangingEvent();
@@ -160,4 +201,4 @@ function addNewProject() {
 
 })()
 
-export { createDeleteBtn };
+export { createDeleteBtn, createNewObjBtn };
