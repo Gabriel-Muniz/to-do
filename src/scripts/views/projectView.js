@@ -55,7 +55,7 @@ export function renderProject(project) {
 
 export function renderProjectSidebar(project) {
     const projectWrapper = document.createElement('div');
-    projectWrapper.className = 'project-wrapper-sidebar';
+    projectWrapper.className = 'project-wrapper sidebar-rendering';
     projectWrapper.dataset.id = project.id;
 
     const projectTitle = document.createElement('h3');

@@ -77,7 +77,7 @@ function projectChangingEvent() {
     const mainSection = document.querySelector('.main-section');
 
     sidebar.addEventListener('click', (e) => {
-        const auxClosestProject = e.target.closest('.project-wrapper-sidebar');
+        const auxClosestProject = e.target.closest('.project-wrapper.sidebar-rendering');
         const isDeleteBtn = e.target.classList.contains('delete-btn');
 
         if (!auxClosestProject || isDeleteBtn) return;

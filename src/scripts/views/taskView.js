@@ -58,7 +58,7 @@ export function renderTask(task) {
 
 export function renderTaskSidebar(task) {
     const taskWrapper = document.createElement('li');
-    taskWrapper.className = 'task-wrapper-sidebar'
+    taskWrapper.className = 'task-wrapper sidebar-rendering'
     taskWrapper.dataset.id = task.id;
 
     const taskTitle = document.createElement('h4');
