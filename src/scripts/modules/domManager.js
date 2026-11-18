@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject } from "../utils/jsonManager.js";
 import { getProjectsArray, storeProjects, deleteProject } from "../utils/storageManager.js"
-import { renderProjectSidebar } from "../views/projectView.js";
+import { renderProject, renderProjectSidebar } from "../views/projectView.js";
 
 const mainSection = document.querySelector('.main-section');
 
@@ -37,6 +37,8 @@ function deleteButtonEvent() {
     })
 }
 
+
+
 function renderSidebar() {
     const sidebar = document.querySelector('.sidebar');
     let sidebarProjectsContainer = document.querySelector('.projects-container');
@@ -68,6 +70,23 @@ function removeElement(id) {
         }
     })
 
+}
+
+function projectChangingEvent() {
+    const sidebar = document.querySelector('.sidebar');
+    const mainSection = document.querySelector('.main-section');
+
+    sidebar.addEventListener('click', (e) => {
+        const auxClosestProject = e.target.closest('.project-wrapper-sidebar');
+        const isDeleteBtn = e.target.classList.contains('delete-btn');
+
+        if (!auxClosestProject || isDeleteBtn) return;
+        mainSection.innerHTML = '';
+
+        mainSection.appendChild(renderProject(findProject(auxClosestProject.dataset.id)))
+        console.log(e.target);
+
+    })
 }
 
 function fieldEditingEvent() {
@@ -111,6 +130,8 @@ function addNewProject() {
     deleteButtonEvent();
     fieldEditingEvent();
     addNewProject();
+    projectChangingEvent();
+
 
     renderSidebar()
 
