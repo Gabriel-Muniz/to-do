@@ -33,9 +33,16 @@ function deleteButtonEvent() {
 
 function renderSidebar() {
     const sidebar = document.querySelector('.sidebar');
-    const sidebarProjectsContainer = document.createElement('div');
-    sidebarProjectsContainer.className = 'projectsContainer';
-    sidebarProjectsContainer.textContent = '';
+    let sidebarProjectsContainer = document.querySelector('.projects-container');
+
+
+    if (sidebarProjectsContainer) {
+        sidebarProjectsContainer.innerHTML = '';
+    } else {
+        sidebarProjectsContainer = document.createElement('div');
+        sidebarProjectsContainer.className = 'projects-container';
+
+    }
     const projectsArray = getProjectsArray();
 
     projectsArray.forEach(project => {
@@ -49,7 +56,7 @@ function removeElement(id) {
     const elementToRemove = document.querySelectorAll(`[data-id="${id}"]`);
 
     elementToRemove.forEach(element => {
-        if (element.parentNode){
+        if (element.parentNode) {
             console.log(element.parentNode);
             element.parentNode.removeChild(element);
         }

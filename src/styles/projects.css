@@ -30,12 +30,13 @@
         grid-row: 1;
     }
 
-    .task-title{
+    .task-title {
         grid-column: 1/2;
         grid-row: 1;
         display: inline-block;
     }
-    .task-progress{
+
+    .task-progress {
         grid-column: 1/2;
         grid-row: 1;
         margin-left: auto;
@@ -47,9 +48,34 @@
     }
 }
 
-.step-wrapper{
+.step-wrapper {
     display: flex;
     flex-flow: row-reverse;
     justify-content: start;
     gap: 1em;
+}
+
+.projects-container{
+    width: 80%;
+}
+
+.project-wrapper-sidebar {
+    width: 100%;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 80% 20%;
+
+    margin-bottom: 2em;
+
+    .project-tasks{
+        grid-column: 1/3;
+    }
+}
+
+.task-wrapper-sidebar{
+    display: grid;
+
+    .task-progress{
+        grid-column: 2;
+    }
 }
