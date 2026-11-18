@@ -1,0 +1,27 @@
+[
+    {
+        "id": null,
+        "title": "Buy groceries",
+        "status": false
+    },
+    {
+        "id": null,
+        "title": "Call the dentist",
+        "status": true
+    },
+    {
+        "id": null,
+        "title": "Water the plants",
+        "status": false
+    },
+    {
+        "id": null,
+        "title": "Read one chapter",
+        "status": false
+    },
+    {
+        "id": null,
+        "title": "Pay the electricity bill",
+        "status": true
+    }
+]

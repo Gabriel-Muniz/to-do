@@ -1,0 +1,62 @@
+[
+  {
+    "id": null,
+    "title": "Plan the garden",
+    "dueDate": null,
+    "taskSteps": [
+      {
+        "id": null,
+        "title": "Choose which vegetables to plant",
+        "status": false
+      }
+    ]
+  },
+  {
+    "id": null,
+    "title": "Prepare the trip",
+    "dueDate": null,
+    "taskSteps": [
+      {
+        "id": null,
+        "title": "Book the hotel",
+        "status": true
+      }
+    ]
+  },
+  {
+    "id": null,
+    "title": "Write the report",
+    "dueDate": null,
+    "taskSteps": [
+      {
+        "id": null,
+        "title": "Collect last month's numbers",
+        "status": false
+      }
+    ]
+  },
+  {
+    "id": null,
+    "title": "Clean the kitchen",
+    "dueDate": null,
+    "taskSteps": [
+      {
+        "id": null,
+        "title": "Empty the fridge",
+        "status": true
+      }
+    ]
+  },
+  {
+    "id": null,
+    "title": "Learn guitar",
+    "dueDate": null,
+    "taskSteps": [
+      {
+        "id": null,
+        "title": "Tune the strings",
+        "status": false
+      }
+    ]
+  }
+]

@@ -142,7 +142,7 @@ function addNewProject() {
     const addProjectBtn = document.querySelector('.add-project-btn');
 
     addProjectBtn.addEventListener('click', (e) => {
-        const newProject = instantiateProject(getRandomPlaceholder());
+        const newProject = getRandomPlaceholder('project');
         storeProjects(newProject);
         renderSidebar();
     })

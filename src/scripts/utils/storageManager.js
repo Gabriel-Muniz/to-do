@@ -26,8 +26,7 @@ function checkStorage() {
 
 (function initialLoadHandler() {
     if (!getProjectsArraySerialized()) {
-        let initialProject = jsonManager.getRandomPlaceholder();
-        initialProject = jsonManager.instantiateProject(initialProject);
+        let initialProject = jsonManager.getRandomPlaceholder('project');
         storeProjects(initialProject);
         return
     }
