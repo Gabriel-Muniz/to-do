@@ -105,6 +105,8 @@ function fieldEditingEvent() {
         currentEditing[currentField] = (currentField == 'status') ? e.target.checked : e.target.textContent;
 
         if (currentField == 'status') {
+            const auxSelector = e.target.closest('[data-id]');
+            syncCheckbox(auxSelector.dataset.id, currentEditing[currentField]);
             const taskWrapper = e.target.closest('.task-wrapper');
             const taskProgress = taskWrapper.querySelector('.task-progress');
             taskProgress.textContent = findProject(taskWrapper.dataset.id).progress + "%";
@@ -113,6 +115,15 @@ function fieldEditingEvent() {
         renderSidebar();
         updateStorage();
     })
+}
+
+function syncCheckbox(checkboxSelector, value) {
+    const checkboxes = document.querySelectorAll(`[data-id="${checkboxSelector}"]`);
+
+    for (const checkbox of checkboxes) {
+        const auxTemp = checkbox.querySelector('input');
+        auxTemp.checked = value;
+    }
 }
 
 function addNewProject() {
