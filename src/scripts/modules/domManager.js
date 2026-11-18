@@ -34,6 +34,10 @@ function deleteButtonEvent() {
 
         updateStorage();
 
+        if(deleteTarget.classList.contains('step-wrapper')){
+            updateTaskProgress(parent.dataset.id);
+        }
+
     })
 }
 
