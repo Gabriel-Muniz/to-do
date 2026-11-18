@@ -108,8 +108,7 @@ function fieldEditingEvent() {
             const auxSelector = e.target.closest('[data-id]');
             syncCheckbox(auxSelector.dataset.id, currentEditing[currentField]);
             const taskWrapper = e.target.closest('.task-wrapper');
-            const taskProgress = taskWrapper.querySelector('.task-progress');
-            taskProgress.textContent = findProject(taskWrapper.dataset.id).progress + "%";
+            updateTaskProgress(taskWrapper.dataset.id)
         }
 
         renderSidebar();
@@ -123,6 +122,15 @@ function syncCheckbox(checkboxSelector, value) {
     for (const checkbox of checkboxes) {
         const auxTemp = checkbox.querySelector('input');
         auxTemp.checked = value;
+    }
+}
+
+function updateTaskProgress(taskId) {
+    const taskWrapper = document.querySelectorAll(`[data-id="${taskId}"]`);
+
+    for (const task of taskWrapper) {
+        const auxTemp = task.querySelector('.task-progress');
+        auxTemp.textContent = findProject(taskId).progress + "%";
     }
 }
 
