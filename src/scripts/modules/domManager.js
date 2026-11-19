@@ -13,7 +13,9 @@ function expandProjectEvent() {
     sidebar.addEventListener('click', (e) => {
         if (!e.target.classList.contains('expand-btn')) return;
 
-        e.target.classList.toggle('expanded');
+        const projectWrapper = e.target.parentNode;
+        
+        projectWrapper.classList.toggle('expanded');        
 
     })
 }
