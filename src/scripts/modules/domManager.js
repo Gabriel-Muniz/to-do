@@ -73,9 +73,13 @@ function addButtonEvent() {
 
 function updateRenderedProject() {
     const currentRenderedProject = mainSection.querySelector('.project-wrapper').dataset.id;
-    mainSection.innerHTML = '';
-    mainSection.appendChild(renderProject(findProject(currentRenderedProject)));
+    renderMainSectionProject(currentRenderedProject);
 
+}
+
+function renderMainSectionProject(projectId){
+    mainSection.innerHTML = '';
+    mainSection.appendChild(renderProject(findProject(projectId)));
 }
 
 function renderSidebar() {
@@ -139,7 +143,7 @@ function projectChangingEvent() {
         if (!auxClosestProject || isDeleteBtn) return;
         mainSection.innerHTML = '';
 
-        mainSection.appendChild(renderProject(findProject(auxClosestProject.dataset.id)))
+        renderMainSectionProject(auxClosestProject.dataset.id)
         console.log(e.target);
 
     })
