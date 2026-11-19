@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { createDeleteBtn, createNewObjBtn } from "../modules/domManager.js";
+import { createDeleteBtn, createNewObjBtn } from "../components/buttons.js";
 import { renderStep } from "./stepView.js";
 
 export function renderTask(task) {

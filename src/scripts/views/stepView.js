@@ -1,4 +1,4 @@
-import { createDeleteBtn } from "../modules/domManager.js";
+import { createDeleteBtn } from "../components/buttons.js";
 export function renderStep(step, isSidebar = false) {
 
     const stepWrapper = document.createElement('li');
