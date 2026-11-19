@@ -14,12 +14,31 @@ function createDeleteBtn() {
     return deleteBtn;
 }
 
-function createNewObjBtn(btnClass){
+function createExpandButton() {
+    const expandBtn = document.createElement('button');
+    expandBtn.className = 'expand-btn expanded';
+    expandBtn.textContent = '>'
+
+    return expandBtn;
+}
+
+function createNewObjBtn(btnClass) {
     const newBtn = document.createElement('button');
     newBtn.className = `add-btn new-${btnClass}`;
     newBtn.textContent = '+';
 
     return newBtn;
+}
+
+function expandProjectEvent() {
+    const sidebar = document.querySelector('.sidebar');
+
+    sidebar.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('expand-btn')) return;
+
+        e.target.classList.toggle('expanded');
+
+    })
 }
 
 function deleteButtonEvent() {
@@ -42,40 +61,40 @@ function deleteButtonEvent() {
 
         updateStorage();
 
-        if(deleteTarget.classList.contains('step-wrapper')){
+        if (deleteTarget.classList.contains('step-wrapper')) {
             updateTaskProgress(parent.dataset.id);
         }
 
     })
 }
 
-function addButtonEvent(){
+function addButtonEvent() {
     const body = document.querySelector('body');
 
     body.addEventListener('click', (e) => {
-        if(!e.target.classList.contains('add-btn')) return;
-        
+        if (!e.target.classList.contains('add-btn')) return;
+
         const parent = e.target.parentNode;
-        
-        if(parent.classList.contains('project-wrapper')){
+
+        if (parent.classList.contains('project-wrapper')) {
             const project = findProject(parent.dataset.id);
             project.addTask(getRandomPlaceholder('task'));
         }
 
-        if(parent.classList.contains('task-wrapper')){
+        if (parent.classList.contains('task-wrapper')) {
             const task = findProject(parent.dataset.id);
             task.addStep(getRandomPlaceholder('step'));
 
             updateTaskProgress();
         }
-        
+
         updateRenderedProject();
         updateStorage();
         renderSidebar();
     })
 }
 
-function updateRenderedProject(){
+function updateRenderedProject() {
     const mainSection = document.querySelector('.main-section');
     const currentRenderedProject = mainSection.querySelector('.project-wrapper').dataset.id;
     mainSection.innerHTML = '';
@@ -192,6 +211,7 @@ function addNewProject() {
 (function attachEventListeners() {
     deleteButtonEvent();
     addButtonEvent();
+    expandProjectEvent()
     fieldEditingEvent();
     addNewProject();
     projectChangingEvent();
@@ -201,4 +221,4 @@ function addNewProject() {
 
 })()
 
-export { createDeleteBtn, createNewObjBtn };
+export { createDeleteBtn, createNewObjBtn, createExpandButton };
