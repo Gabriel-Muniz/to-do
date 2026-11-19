@@ -24,26 +24,11 @@ function checkStorage() {
     }
 }
 
-(function initialLoadHandler() {
-    if (!getProjectsArraySerialized()) {
-        let initialProject = jsonManager.getRandomPlaceholder('project');
-        storeProjects(initialProject);
-        return
-    }
-
-    const currentProjects = jsonManager.deserializeProject(getProjectsArraySerialized());
-    projectsArray = currentProjects.map(project => {
-        return jsonManager.instantiateProject(project)
-    });
-
-})()
-
-
 function deleteProject(projectToRemoveId) {
     projectsArray.splice(projectsArray.findIndex(project => project.id === projectToRemoveId), 1)
 }
 
-function getProjectsArray(){
+function getProjectsArray() {
     return projectsArray;
 }
 
@@ -74,17 +59,25 @@ function updateStorage() {
 function findProject(id) {
 
     for (const project of projectsArray) {
-        if(project.id == id) return project
+        if (project.id == id) return project
 
         for (const task of project.projectTasks) {
-            if(task.id == id) return task;
+            if (task.id == id) return task;
 
             for (const step of task.taskSteps) {
-                if(step.id == id) return step;
+                if (step.id == id) return step;
             }
         }
     }
     return null;
 }
 
-export { checkStorage, getProjectsArray, getProjectsArraySerialized, storeProjects, deleteProject, getStorage, findProject, updateStorage }
+function storeProjectsStates(projectsStates) {
+    localStorage.removeItem("projectsStates");
+    localStorage.setItem("projectsStates", jsonManager.serializeProject(projectsStates))
+};
+
+function getProjectsStates() {
+    return jsonManager.deserializeProject(localStorage.getItem("projectsStates"));
+}
+export { checkStorage, getProjectsArray, getProjectsArraySerialized, storeProjects, deleteProject, getStorage, findProject, updateStorage, storeProjectsStates, getProjectsStates }

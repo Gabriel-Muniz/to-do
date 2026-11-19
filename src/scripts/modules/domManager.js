@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
-import { getRandomPlaceholder, instantiateProject } from "../utils/jsonManager.js";
-import { getProjectsArray, storeProjects, deleteProject } from "../utils/storageManager.js"
+import { getRandomPlaceholder, instantiateProject, deserializeProject } from "../utils/jsonManager.js";
+import { getProjectsArray, storeProjects, deleteProject, getProjectsStates, storeProjectsStates, getProjectsArraySerialized } from "../utils/storageManager.js"
 import { renderProject, renderProjectSidebar } from "../views/projectView.js";
 
 const body = document.querySelector('body');
@@ -170,15 +170,32 @@ function addNewProject() {
 
 }
 
-(function attachEventListeners() {
+function attachEventListeners() {
     deleteButtonEvent();
     addButtonEvent();
     expandProjectEvent()
     fieldEditingEvent();
     addNewProject();
     projectChangingEvent();
+}
 
+(function initialLoadHandler() {
 
+    if (!getProjectsArraySerialized()) {
+
+        const initialProject = getRandomPlaceholder('project');
+        storeProjects(initialProject);
+
+    } else {
+        const currentProjects = deserializeProject(getProjectsArraySerialized());
+
+        currentProjects.forEach(project => {
+            storeProjects(instantiateProject(project));
+        })
+
+    }
+
+    attachEventListeners()
     renderSidebar()
 
 })()
