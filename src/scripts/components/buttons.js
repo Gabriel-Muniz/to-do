@@ -8,7 +8,7 @@ function createDeleteBtn() {
 
 function createExpandBtn() {
     const expandBtn = document.createElement('button');
-    expandBtn.className = 'expand-btn expanded';
+    expandBtn.className = 'expand-btn';
     expandBtn.textContent = '>'
 
     return expandBtn;
