@@ -80,4 +80,17 @@ function storeProjectsStates(projectsStates) {
 function getProjectsStates() {
     return jsonManager.deserializeProject(localStorage.getItem("projectsStates"));
 }
-export { checkStorage, getProjectsArray, getProjectsArraySerialized, storeProjects, deleteProject, getStorage, findProject, updateStorage, storeProjectsStates, getProjectsStates }
+
+function storeActiveProject(projectId) {
+    localStorage.removeItem("activeProject");
+    localStorage.setItem("activeProject", projectId);
+}
+
+function getActiveProject() {
+    return localStorage.getItem("activeProject");
+}
+export {
+    checkStorage, getProjectsArray, getProjectsArraySerialized,
+    storeProjects, deleteProject, getStorage, findProject, updateStorage,
+    storeProjectsStates, getProjectsStates, storeActiveProject, getActiveProject
+}

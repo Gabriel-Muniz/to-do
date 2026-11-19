@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject, deserializeProject } from "../utils/jsonManager.js";
-import { getProjectsArray, storeProjects, deleteProject, getProjectsStates, storeProjectsStates, getProjectsArraySerialized } from "../utils/storageManager.js"
+import { getProjectsArray, storeProjects, deleteProject, getProjectsStates, storeProjectsStates, getProjectsArraySerialized, getActiveProject, storeActiveProject } from "../utils/storageManager.js"
 import { renderProject, renderProjectSidebar } from "../views/projectView.js";
 
 const body = document.querySelector('body');
@@ -79,7 +79,22 @@ function updateRenderedProject() {
 
 function renderMainSectionProject(projectId){
     mainSection.innerHTML = '';
-    mainSection.appendChild(renderProject(findProject(projectId)));
+    const projectToRender = findProject(projectId);
+
+    if(getProjectsArray().length == 0){
+        storeActiveProject(null);
+        return;
+    };
+
+    if(!projectToRender){
+        const firstProject = getProjectsArray()[0];
+
+        console.log(firstProject);
+        
+        mainSection.appendChild(renderProject(firstProject));
+        return
+    }
+    mainSection.appendChild(renderProject(projectToRender));
 }
 
 function renderSidebar() {
@@ -146,6 +161,7 @@ function projectChangingEvent() {
         renderMainSectionProject(auxClosestProject.dataset.id)
         console.log(e.target);
 
+        storeActiveProject(auxClosestProject.dataset.id);
     })
 }
 
@@ -218,6 +234,8 @@ function attachEventListeners() {
     if (!getProjectsArraySerialized()) {
         const initialProject = getRandomPlaceholder('project');
         storeProjects(initialProject);
+        storeActiveProject(initialProject.id);
+        renderMainSectionProject(initialProject.id)
         renderSidebar();
         setProjectsState();
 
@@ -227,6 +245,8 @@ function attachEventListeners() {
         currentProjects.forEach(project => {
             storeProjects(instantiateProject(project));
         })
+
+        renderMainSectionProject(getActiveProject())
         renderSidebar()
     }
     // loadProjectsStates();
