@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { renderTask, renderTaskSidebar } from "./taskView.js";
-import { createDeleteBtn, createNewObjBtn, createExpandButton } from "../modules/domManager.js";
+import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../modules/domManager.js";
 
 export function renderProject(project) {
     const editableFields = ['.project-title', '.project-description', '.day-span', '.month-span', '.year-span']
@@ -74,7 +74,7 @@ export function renderProjectSidebar(project) {
         projectTaskList.appendChild(renderTaskSidebar(task));
     });
 
-    projectWrapper.appendChild(createExpandButton());
+    projectWrapper.appendChild(createExpandBtn());
     projectWrapper.appendChild(projectTitle);
     projectWrapper.appendChild(projectPriority);
     projectWrapper.appendChild(projectTaskList);

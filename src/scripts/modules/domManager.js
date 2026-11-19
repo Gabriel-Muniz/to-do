@@ -14,7 +14,7 @@ function createDeleteBtn() {
     return deleteBtn;
 }
 
-function createExpandButton() {
+function createExpandBtn() {
     const expandBtn = document.createElement('button');
     expandBtn.className = 'expand-btn expanded';
     expandBtn.textContent = '>'
@@ -221,4 +221,4 @@ function addNewProject() {
 
 })()
 
-export { createDeleteBtn, createNewObjBtn, createExpandButton };
+export { createDeleteBtn, createNewObjBtn, createExpandBtn };
