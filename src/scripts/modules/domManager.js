@@ -7,6 +7,8 @@ import { renderProject, renderProjectSidebar } from "../views/projectView.js";
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.sidebar');
 const mainSection = document.querySelector('.main-section');
+const sidebarProjectsContainer = document.querySelector('.projects-container');
+
 
 
 function expandProjectEvent() {
@@ -77,23 +79,15 @@ function updateRenderedProject() {
 }
 
 function renderSidebar() {
-    let sidebarProjectsContainer = document.querySelector('.projects-container');
-
-
-    if (sidebarProjectsContainer) {
+    if (sidebarProjectsContainer.hasChildNodes()) {
         sidebarProjectsContainer.innerHTML = '';
-    } else {
-        sidebarProjectsContainer = document.createElement('div');
-        sidebarProjectsContainer.className = 'projects-container';
-
     }
+
     const projectsArray = getProjectsArray();
 
     projectsArray.forEach(project => {
         sidebarProjectsContainer.appendChild(renderProjectSidebar(project));
     })
-
-    sidebar.appendChild(sidebarProjectsContainer);
 }
 
 function removeElement(id) {
