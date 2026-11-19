@@ -154,8 +154,9 @@ function projectChangingEvent() {
     sidebar.addEventListener('click', (e) => {
         const auxClosestProject = e.target.closest('.project-wrapper.sidebar-rendering');
         const isDeleteBtn = e.target.classList.contains('delete-btn');
+        const isExpandBtn = e.target.classList.contains('expand-btn');
 
-        if (!auxClosestProject || isDeleteBtn) return;
+        if (!auxClosestProject || isDeleteBtn || isExpandBtn) return;
         mainSection.innerHTML = '';
 
         renderMainSectionProject(auxClosestProject.dataset.id)
