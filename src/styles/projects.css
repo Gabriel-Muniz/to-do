@@ -52,7 +52,7 @@
     }
 }
 
-.project-wrapper.expanded > .project-tasks{
+.project-wrapper.sidebar-rendering:not(.expanded) > .project-tasks{
     height: 0;
 }
 
