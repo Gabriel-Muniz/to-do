@@ -52,7 +52,7 @@
     }
 }
 
-.project-wrapper.project-wrapper.sidebar-rendering:has(button.expanded) > .project-tasks{
+.project-wrapper.sidebar-rendering:not(:has(button.expanded)) > .project-tasks{
     height: 0;
 }
 
