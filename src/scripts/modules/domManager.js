@@ -4,25 +4,23 @@ import { getRandomPlaceholder, instantiateProject } from "../utils/jsonManager.j
 import { getProjectsArray, storeProjects, deleteProject } from "../utils/storageManager.js"
 import { renderProject, renderProjectSidebar } from "../views/projectView.js";
 
+const body = document.querySelector('body');
+const sidebar = document.querySelector('.sidebar');
 const mainSection = document.querySelector('.main-section');
 
 
 function expandProjectEvent() {
-    const sidebar = document.querySelector('.sidebar');
-
     sidebar.addEventListener('click', (e) => {
         if (!e.target.classList.contains('expand-btn')) return;
 
         const projectWrapper = e.target.parentNode;
-        
-        projectWrapper.classList.toggle('expanded');        
+
+        projectWrapper.classList.toggle('expanded');
 
     })
 }
 
 function deleteButtonEvent() {
-    const body = document.querySelector('body');
-
     body.addEventListener('click', (e) => {
         if (!e.target.classList.contains('delete-btn')) return;
 
@@ -48,8 +46,6 @@ function deleteButtonEvent() {
 }
 
 function addButtonEvent() {
-    const body = document.querySelector('body');
-
     body.addEventListener('click', (e) => {
         if (!e.target.classList.contains('add-btn')) return;
 
@@ -74,7 +70,6 @@ function addButtonEvent() {
 }
 
 function updateRenderedProject() {
-    const mainSection = document.querySelector('.main-section');
     const currentRenderedProject = mainSection.querySelector('.project-wrapper').dataset.id;
     mainSection.innerHTML = '';
     mainSection.appendChild(renderProject(findProject(currentRenderedProject)));
@@ -82,7 +77,6 @@ function updateRenderedProject() {
 }
 
 function renderSidebar() {
-    const sidebar = document.querySelector('.sidebar');
     let sidebarProjectsContainer = document.querySelector('.projects-container');
 
 
@@ -115,9 +109,6 @@ function removeElement(id) {
 }
 
 function projectChangingEvent() {
-    const sidebar = document.querySelector('.sidebar');
-    const mainSection = document.querySelector('.main-section');
-
     sidebar.addEventListener('click', (e) => {
         const auxClosestProject = e.target.closest('.project-wrapper.sidebar-rendering');
         const isDeleteBtn = e.target.classList.contains('delete-btn');
@@ -133,8 +124,6 @@ function projectChangingEvent() {
 
 function fieldEditingEvent() {
     let currentEditing;
-
-    const body = document.querySelector('body');
 
     body.addEventListener('input', (e) => {
         currentEditing = e.target.closest('[data-id]').dataset.id;
