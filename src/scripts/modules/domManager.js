@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject, deserializeProject } from "../utils/jsonManager.js";
-import { getProjectsArray, storeProjects, deleteProject, getProjectsStates, storeProjectsStates, getProjectsArraySerialized, getActiveProject, storeActiveProject } from "../utils/storageManager.js"
+import { getProjectsArray, storeProjects, deleteProject, getObjsStates, storeObjsStates, getProjectsArraySerialized, getActiveProject, storeActiveProject } from "../utils/storageManager.js"
 import { renderProject, renderProjectSidebar } from "../views/projectView.js";
 
 const body = document.querySelector('body');
@@ -11,13 +11,16 @@ const sidebarProjectsContainer = document.querySelector('.projects-container');
 
 function expandProjectEvent() {
     sidebar.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('expand-btn')) return;
+        const isExpandBtn = e.target.classList.contains('expand-btn');
 
-        const projectWrapper = e.target.parentNode;
+        if (!isExpandBtn) return;
 
-        projectWrapper.classList.toggle('expanded');
+        const objWrapper = e.target.parentNode;
+        console.log(e.target);
+        
+        objWrapper.classList.toggle('expanded');
 
-        setProjectsState();
+        setObjsState();
     })
 }
 
@@ -43,7 +46,7 @@ function deleteButtonEvent() {
             updateTaskProgress(parent.dataset.id);
         }
 
-        setProjectsState();
+        setObjsState();
     })
 }
 
@@ -77,20 +80,20 @@ function updateRenderedProject() {
 
 }
 
-function renderMainSectionProject(projectId){
+function renderMainSectionProject(projectId) {
     mainSection.innerHTML = '';
     const projectToRender = findProject(projectId);
 
-    if(getProjectsArray().length == 0){
+    if (getProjectsArray().length == 0) {
         storeActiveProject(null);
         return;
     };
 
-    if(!projectToRender){
+    if (!projectToRender) {
         const firstProject = getProjectsArray()[0];
 
         console.log(firstProject);
-        
+
         mainSection.appendChild(renderProject(firstProject));
         return
     }
@@ -108,7 +111,7 @@ function renderSidebar() {
         sidebarProjectsContainer.appendChild(renderProjectSidebar(project));
     })
 
-    if(getProjectsStates()){
+    if (getObjsStates()) {
         loadProjectsStates();
     }
 }
@@ -125,21 +128,22 @@ function removeElement(id) {
 
 }
 
-function setProjectsState() {
-    const projectsState = getProjectsArray().map(project => {
-        const projectWrapper = sidebarProjectsContainer.querySelector(`[data-id="${project.id}"]`)
+function setObjsState() {
 
+    const expandableElements = Array.from(sidebar.querySelectorAll('.sidebar-rendering'));
+
+    const objsState = expandableElements.map(obj => {
         return {
-            id: project.id,
-            expanded: (projectWrapper.classList.contains('expanded')) ? true : false,
+            id: obj.dataset.id,
+            expanded: (obj.classList.contains('expanded')) ? true : false,
         }
     })
 
-    storeProjectsStates(projectsState)
+    storeObjsStates(objsState)
 }
 
 function loadProjectsStates() {
-    const projectsState = getProjectsStates();
+    const projectsState = getObjsStates();
 
     for (const project of projectsState) {
         const currentProject = sidebarProjectsContainer.querySelector(`[data-id="${project.id}"]`)
@@ -238,7 +242,7 @@ function attachEventListeners() {
         storeActiveProject(initialProject.id);
         renderMainSectionProject(initialProject.id)
         renderSidebar();
-        setProjectsState();
+        setObjsState();
 
     } else {
         const currentProjects = deserializeProject(getProjectsArraySerialized());

@@ -72,13 +72,13 @@ function findProject(id) {
     return null;
 }
 
-function storeProjectsStates(projectsStates) {
-    localStorage.removeItem("projectsStates");
-    localStorage.setItem("projectsStates", jsonManager.serializeProject(projectsStates))
+function storeObjsStates(projectsStates) {
+    localStorage.removeItem("objsStates");
+    localStorage.setItem("objsStates", jsonManager.serializeProject(projectsStates))
 };
 
-function getProjectsStates() {
-    return jsonManager.deserializeProject(localStorage.getItem("projectsStates"));
+function getObjsStates() {
+    return jsonManager.deserializeProject(localStorage.getItem("objsStates"));
 }
 
 function storeActiveProject(projectId) {
@@ -92,5 +92,5 @@ function getActiveProject() {
 export {
     checkStorage, getProjectsArray, getProjectsArraySerialized,
     storeProjects, deleteProject, getStorage, findProject, updateStorage,
-    storeProjectsStates, getProjectsStates, storeActiveProject, getActiveProject
+    storeObjsStates, getObjsStates, storeActiveProject, getActiveProject
 }

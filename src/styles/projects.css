@@ -41,19 +41,19 @@
         grid-row: 1;
     }
 
-    .project-tasks{
+    .project-tasks {
         grid-column: 1/-1;
-        overflow: hidden;
         transition: height 0.2s;
     }
 
-    .delete-btn{
+    .delete-btn {
         grid-column: 1/-1;
     }
 }
 
-.project-wrapper.sidebar-rendering:not(.expanded) > .project-tasks{
+.sidebar-rendering:not(.expanded)>ul {
     height: 0;
+    overflow: hidden;
 }
 
 .task-wrapper {
@@ -84,6 +84,22 @@
     }
 }
 
+.task-wrapper.sidebar-rendering {
+    grid-template-columns: 2em 3fr 1fr;
+
+    .expand-btn {
+        grid-column: 1/2;
+    }
+
+    .task-title {
+        grid-column: 2/3;
+    }
+
+    .task-progress {
+        grid-column: 3/4;
+    }
+}
+
 .step-wrapper {
     display: flex;
     flex-flow: row-reverse;
@@ -93,4 +109,8 @@
 
 .projects-container {
     width: 80%;
+}
+
+ul {
+    padding-left: 1.5em;
 }

@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { createDeleteBtn, createNewObjBtn } from "../components/buttons.js";
+import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components/buttons.js";
 import { renderStep } from "./stepView.js";
 
 export function renderTask(task) {
@@ -77,6 +77,7 @@ export function renderTaskSidebar(task) {
         taskStepList.append(renderStep(step, true));
     })
 
+    taskWrapper.appendChild(createExpandBtn())
     taskWrapper.appendChild(taskTitle);
     taskWrapper.appendChild(taskProgress);
     taskWrapper.appendChild(taskStepList);
