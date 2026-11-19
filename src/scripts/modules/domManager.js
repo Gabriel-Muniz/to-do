@@ -9,8 +9,6 @@ const sidebar = document.querySelector('.sidebar');
 const mainSection = document.querySelector('.main-section');
 const sidebarProjectsContainer = document.querySelector('.projects-container');
 
-
-
 function expandProjectEvent() {
     sidebar.addEventListener('click', (e) => {
         if (!e.target.classList.contains('expand-btn')) return;
@@ -19,6 +17,7 @@ function expandProjectEvent() {
 
         projectWrapper.classList.toggle('expanded');
 
+        setProjectsState();
     })
 }
 
@@ -44,6 +43,7 @@ function deleteButtonEvent() {
             updateTaskProgress(parent.dataset.id);
         }
 
+        setProjectsState();
     })
 }
 
@@ -88,6 +88,10 @@ function renderSidebar() {
     projectsArray.forEach(project => {
         sidebarProjectsContainer.appendChild(renderProjectSidebar(project));
     })
+
+    if(getProjectsStates()){
+        loadProjectsStates();
+    }
 }
 
 function removeElement(id) {
@@ -100,6 +104,31 @@ function removeElement(id) {
         }
     })
 
+}
+
+function setProjectsState() {
+    const projectsState = getProjectsArray().map(project => {
+        const projectWrapper = sidebarProjectsContainer.querySelector(`[data-id="${project.id}"]`)
+
+        return {
+            id: project.id,
+            expanded: (projectWrapper.classList.contains('expanded')) ? true : false,
+        }
+    })
+
+    storeProjectsStates(projectsState)
+}
+
+function loadProjectsStates() {
+    const projectsState = getProjectsStates();
+
+    for (const project of projectsState) {
+        const currentProject = sidebarProjectsContainer.querySelector(`[data-id="${project.id}"]`)
+
+        if (project.expanded) {
+            currentProject.classList.add('expanded');
+        }
+    }
 }
 
 function projectChangingEvent() {
@@ -180,11 +209,13 @@ function attachEventListeners() {
 }
 
 (function initialLoadHandler() {
+    attachEventListeners();
 
     if (!getProjectsArraySerialized()) {
-
         const initialProject = getRandomPlaceholder('project');
         storeProjects(initialProject);
+        renderSidebar();
+        setProjectsState();
 
     } else {
         const currentProjects = deserializeProject(getProjectsArraySerialized());
@@ -192,10 +223,7 @@ function attachEventListeners() {
         currentProjects.forEach(project => {
             storeProjects(instantiateProject(project));
         })
-
+        renderSidebar()
     }
-
-    attachEventListeners()
-    renderSidebar()
-
+    // loadProjectsStates();
 })()
