@@ -32,6 +32,7 @@
     }
 
     .new-task {
+        position: relative;
         grid-column: 1/-1;
         margin: 0 -1.5em -1.5em;
         height: 2.5em;
@@ -135,6 +136,7 @@
     }
 
     .new-step {
+        position: relative;
         border: 1px dashed black;
         background: none;
         margin-bottom: .5em;
@@ -231,6 +233,30 @@ ul {
     background-color: lightcoral;
 }
 
-*:has(> .add-btn:hover) {
+.add-btn::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    content: '';
+    height: 0px;
+    grid-column: 1/-1;
     background-color: lightgreen;
+    transition: all .5s;
+}
+
+.new-task:hover::before {
+    content: 'Add Task';
+    height: 100%;
+    bottom: 0;
+
+}
+
+.new-step:hover::before {
+    content: 'Add Step';
+    height: 100%;
 }
