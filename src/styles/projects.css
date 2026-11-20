@@ -260,3 +260,14 @@ ul {
     content: 'Add Step';
     height: 100%;
 }
+
+input[class*='input']{
+    background: none;
+    border: none;
+    display: inline-block;
+    width: 3ch;
+
+    &.year-input{
+        width: 5ch;
+    }
+}

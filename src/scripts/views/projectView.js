@@ -3,7 +3,7 @@ import { renderTask, renderTaskSidebar } from "./taskView.js";
 import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components/buttons.js";
 
 export function renderProject(project) {
-    const editableFields = ['.project-title', '.project-description', '.day-span', '.month-span', '.year-span']
+    const editableFields = ['.project-title', '.project-description']
 
     const projectWrapper = document.createElement('div');
     projectWrapper.className = 'project-wrapper';
@@ -18,17 +18,17 @@ export function renderProject(project) {
     const projectDueDateWrapper = document.createElement('div');
     projectDueDateWrapper.className = 'project-dueDate';
 
-    projectDueDateWrapper.innerHTML = '<span class="day-span"></span> / <span class="month-span"></span> / <span class="year-span"></span>';
+    projectDueDateWrapper.innerHTML = '<input type="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>';
     const auxDueDate = new Date(project.dueDate);
 
-    const dayDueDate = projectDueDateWrapper.querySelector('.day-span');
-    dayDueDate.textContent = format(auxDueDate, 'dd');
+    const dayDueDate = projectDueDateWrapper.querySelector('.day-input');
+    dayDueDate.value = format(auxDueDate, 'dd');
 
-    const monthDueDate = projectDueDateWrapper.querySelector('.month-span');
-    monthDueDate.textContent = format(auxDueDate, 'MM');
+    const monthDueDate = projectDueDateWrapper.querySelector('.month-input');
+    monthDueDate.value = format(auxDueDate, 'MM');
 
-    const yearDueDate = projectDueDateWrapper.querySelector('.year-span');
-    yearDueDate.textContent = format(auxDueDate, 'yyyy');
+    const yearDueDate = projectDueDateWrapper.querySelector('.year-input');
+    yearDueDate.value = format(auxDueDate, 'yyyy');
 
     projectTitle.textContent = project.title;
     projectDescription.textContent = project.description;

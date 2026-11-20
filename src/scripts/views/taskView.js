@@ -3,7 +3,7 @@ import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components
 import { renderStep } from "./stepView.js";
 
 export function renderTask(task) {
-    const editableFields = ['.task-title', '.day-span', '.month-span', '.year-span',]
+    const editableFields = ['.task-title']
 
     const taskWrapper = document.createElement('li');
     taskWrapper.className = 'task-wrapper';
@@ -21,18 +21,18 @@ export function renderTask(task) {
     taskTitle.textContent = task.title;
     taskProgress.textContent = `${task.progress}%`;
 
-    taskDueDateWrapper.innerHTML = '<span class="day-span"></span> / <span class="month-span"></span> / <span class="year-span"></span>'
+    taskDueDateWrapper.innerHTML = '<input type="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>'
 
     const auxDueDate = new Date(task.dueDate);
 
-    const dayDueDate = taskDueDateWrapper.querySelector('.day-span');
-    dayDueDate.textContent = format(auxDueDate, 'dd');
+    const dayDueDate = taskDueDateWrapper.querySelector('.day-input');
+    dayDueDate.value = format(auxDueDate, 'dd');
 
-    const monthDueDate = taskDueDateWrapper.querySelector('.month-span');
-    monthDueDate.textContent = format(auxDueDate, 'MM');
+    const monthDueDate = taskDueDateWrapper.querySelector('.month-input');
+    monthDueDate.value = format(auxDueDate, 'MM');
 
-    const yearDueDate = taskDueDateWrapper.querySelector('.year-span');
-    yearDueDate.textContent = format(auxDueDate, 'yyyy');
+    const yearDueDate = taskDueDateWrapper.querySelector('.year-input');
+    yearDueDate.value = format(auxDueDate, 'yyyy');
 
     taskWrapper.appendChild(taskTitle);
     taskWrapper.appendChild(taskProgress);
