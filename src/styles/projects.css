@@ -25,10 +25,13 @@
 }
 
 .project-wrapper.sidebar-rendering {
+    position: relative;
     display: grid;
     grid-template-columns: 2em 4fr 1fr;
     width: 100%;
     margin-bottom: 2em;
+
+    padding: 1em;
 
     .expand-btn {
         width: 100%;
@@ -39,21 +42,38 @@
     .project-title {
         grid-column: 2/3;
         grid-row: 1;
+
     }
 
     .project-tasks {
         grid-column: 1/-1;
-        transition: height 0.2s;
     }
 
     .delete-btn {
+        margin: -1em;
+        margin-top: 1em;
+
         grid-column: 1/-1;
     }
 }
 
-.sidebar-rendering:not(.expanded)>ul {
-    height: 0;
-    overflow: hidden;
+.project-wrapper,
+.task-wrapper {
+    align-items: center;
+}
+
+.sidebar-rendering {
+
+    &:not(.expanded)>ul {
+        height: 0;
+        overflow: hidden;
+
+    }
+
+    &.expanded>.expand-btn {
+        transform: rotate(90deg);
+    }
+
 }
 
 .task-wrapper {
@@ -85,6 +105,7 @@
 }
 
 .task-wrapper.sidebar-rendering {
+    grid-column: 1/-1;
     grid-template-columns: 2em 3fr 1fr;
 
     .expand-btn {
@@ -96,7 +117,7 @@
     }
 
     .task-progress {
-        grid-column: 3/4;
+        grid-column: 3;
     }
 }
 
@@ -105,6 +126,12 @@
     flex-flow: row-reverse;
     justify-content: start;
     gap: 1em;
+
+    label:has(+ input[type="checkbox"]:checked) {
+        text-decoration: line-through;
+        text-decoration-thickness: 15%;
+        opacity: 0.8;
+    }
 }
 
 .projects-container {
@@ -113,4 +140,24 @@
 
 ul {
     padding-left: 1.5em;
+    transition: height 0.2s;
+}
+
+.delete-btn:before {
+    content: "\00D7";
+}
+
+.expand-btn {
+    background: none;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: none;
+    font-weight: bold;
+    font-size: 1.3em;
+
+    transition: all .5s;
+}
+
+.expand-btn:before {
+    content: "\27A4";
 }

@@ -1,7 +1,6 @@
 function createDeleteBtn() {
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
-    deleteBtn.textContent = 'X'
 
     return deleteBtn;
 }
@@ -9,7 +8,6 @@ function createDeleteBtn() {
 function createExpandBtn() {
     const expandBtn = document.createElement('button');
     expandBtn.className = 'expand-btn';
-    expandBtn.textContent = '>'
 
     return expandBtn;
 }
