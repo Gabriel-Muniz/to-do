@@ -21,7 +21,7 @@ export function renderTask(task) {
     taskTitle.textContent = task.title;
     taskProgress.textContent = `${task.progress}%`;
 
-    taskDueDateWrapper.innerHTML = '<input type="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>'
+    taskDueDateWrapper.innerHTML = '<input type="text" inputmode="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="text" inputmode="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="text" inputmode="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>'
 
     const auxDueDate = new Date(task.dueDate);
 
