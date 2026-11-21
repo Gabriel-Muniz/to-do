@@ -13,7 +13,7 @@ export function renderTask(task) {
     taskTitle.className = 'task-title';
 
     const taskDueDateWrapper = document.createElement('div');
-    taskDueDateWrapper.className = 'task-dueDate';
+    taskDueDateWrapper.className = 'task-dueDate dueDate';
 
     const taskProgress = document.createElement('span')
     taskProgress.className = 'task-progress'

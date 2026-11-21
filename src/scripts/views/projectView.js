@@ -16,7 +16,7 @@ export function renderProject(project) {
     projectDescription.className = 'project-description';
 
     const projectDueDateWrapper = document.createElement('div');
-    projectDueDateWrapper.className = 'project-dueDate';
+    projectDueDateWrapper.className = 'project-dueDate dueDate';
 
     projectDueDateWrapper.innerHTML = '<input type="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>';
     const auxDueDate = new Date(project.dueDate);
