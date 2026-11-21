@@ -17,7 +17,7 @@ function expandProjectEvent() {
 
         const objWrapper = e.target.parentNode;
         console.log(e.target);
-        
+
         objWrapper.classList.toggle('expanded');
 
         setObjsState();
@@ -172,6 +172,7 @@ function projectChangingEvent() {
 
 function fieldEditingEvent() {
     let currentEditing;
+    let auxInputValue;
 
     body.addEventListener('input', (e) => {
         currentEditing = e.target.closest('[data-id]').dataset.id;
@@ -193,6 +194,63 @@ function fieldEditingEvent() {
         renderSidebar();
         updateStorage();
     })
+
+    body.addEventListener('keydown', (e) => {
+        if (!e.target.parentNode.classList.contains('dueDate')) return;
+
+        if (!checkKeyDown(e)) {
+            e.preventDefault();
+            return;
+        };
+    })
+
+    body.addEventListener('compositionstart', (e) => {
+        if (!e.target.parentNode.classList.contains('dueDate')) return;
+
+        auxInputValue = e.target.value;
+    })
+
+    body.addEventListener('compositionend', (e) => {
+        if (!e.target.parentNode.classList.contains('dueDate')) return;
+        e.target.value = auxInputValue;
+    })
+
+
+}
+
+function checkKeyDown(keyDownEvent) {
+    let isKeyDownValid = false;
+    const auxEventKey = keyDownEvent.key.toLocaleLowerCase();
+
+    const allowedKeys = [
+        'Tab',
+        'Control',
+        'Enter',
+        'Delete',
+        'Shift',
+        'Backspace',
+        'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+        'ArrowUp',
+        'ArrowRight',
+        'ArrowDown',
+        'ArrowLeft',
+    ]
+
+    const shortcutKeys = ['a', 'c', 'v', 'x', 'r', 'f', 'delete'];
+
+    if (allowedKeys.includes(keyDownEvent.key)) {
+        isKeyDownValid = true;
+    }
+
+    if ((shortcutKeys.includes(auxEventKey)) && keyDownEvent.ctrlKey) {
+        isKeyDownValid = true;
+    }
+
+    if (keyDownEvent.key.match(new RegExp(/^[0-9]/))) {
+        isKeyDownValid = true;
+    }
+
+    return isKeyDownValid;
 }
 
 function syncCheckbox(checkboxSelector, value) {
