@@ -3,6 +3,7 @@ import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject, deserializeProject } from "../utils/jsonManager.js";
 import { getProjectsArray, storeProjects, deleteProject, getObjsStates, storeObjsStates, getProjectsArraySerialized, getActiveProject, storeActiveProject } from "../utils/storageManager.js"
 import { renderProject, renderProjectSidebar } from "../views/projectView.js";
+import { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay } from "../utils/dateManager.js";
 
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.sidebar');
@@ -202,6 +203,35 @@ function fieldEditingEvent() {
             e.preventDefault();
             return;
         };
+    })
+
+    body.addEventListener('focusout', (e) => {
+        if (!e.target.parentNode.classList.contains('dueDate')) return;
+
+        const dueDateWrapper = e.target.parentNode;
+        const dayInput = dueDateWrapper.querySelector('.day-input');
+        const monthInput = dueDateWrapper.querySelector('.month-input');
+        const yearInput = dueDateWrapper.querySelector('.year-input');
+
+        const auxTargetClasses = e.target.classList;
+
+        if (e.target === yearInput) {
+            yearInput.value = (yearInput.value < getCurrentYear()) ? getCurrentYear() : yearInput.value;
+        }
+
+        if (e.target === monthInput) {
+            monthInput.value = (!checkMonth(monthInput.value)) ? getCurrentMonth() : monthInput.value;
+        }
+
+        if (e.target === dayInput) {
+            if (dayInput.value <= 0) {
+                dayInput.value = getThreeDaysFromNow();
+            }
+
+            if (dayInput.value > getMaxDay(monthInput.value, yearInput.value)) {
+                dayInput.value = getMaxDay(monthInput.value, yearInput.value);
+            }
+        }
     })
 
     body.addEventListener('compositionstart', (e) => {
