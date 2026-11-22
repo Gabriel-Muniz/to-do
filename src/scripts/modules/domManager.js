@@ -12,7 +12,7 @@ const sidebarProjectsContainer = document.querySelector('.projects-container');
 
 function expandProjectEvent() {
     sidebar.addEventListener('click', (e) => {
-        const isExpandBtn = e.target.classList.contains('expand-btn');
+        const isExpandBtn = e.target.closest('.expand-btn');
 
         if (!isExpandBtn) return;
 
@@ -27,7 +27,7 @@ function expandProjectEvent() {
 
 function deleteButtonEvent() {
     body.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('delete-btn')) return;
+        if (!e.target.closest('.delete-btn')) return;
 
         const deleteTarget = e.target.parentElement;
         const parent = deleteTarget.parentElement.closest([`[data-id]`]);
@@ -53,7 +53,7 @@ function deleteButtonEvent() {
 
 function addButtonEvent() {
     body.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('add-btn')) return;
+        if (!e.target.closest('.add-btn')) return;
 
         const parent = e.target.parentNode;
 
@@ -158,8 +158,8 @@ function loadProjectsStates() {
 function projectChangingEvent() {
     sidebar.addEventListener('click', (e) => {
         const auxClosestProject = e.target.closest('.project-wrapper.sidebar-rendering');
-        const isDeleteBtn = e.target.classList.contains('delete-btn');
-        const isExpandBtn = e.target.classList.contains('expand-btn');
+        const isDeleteBtn = e.target.closest('.delete-btn');
+        const isExpandBtn = e.target.closest('.expand-btn');
 
         if (!auxClosestProject || isDeleteBtn || isExpandBtn) return;
         mainSection.innerHTML = '';
@@ -197,7 +197,7 @@ function fieldEditingEvent() {
     })
 
     body.addEventListener('keydown', (e) => {
-        if (!e.target.parentNode.classList.contains('dueDate')) return;
+        if (!e.target.closest('.dueDate')) return;
 
         if (!checkKeyDown(e)) {
             e.preventDefault();
@@ -206,7 +206,7 @@ function fieldEditingEvent() {
     })
 
     body.addEventListener('focusout', (e) => {
-        if (!e.target.parentNode.classList.contains('dueDate')) return;
+        if (!e.target.closest('.dueDate')) return;
 
         const dueDateWrapper = e.target.parentNode;
         const dayInput = dueDateWrapper.querySelector('.day-input');
@@ -235,13 +235,13 @@ function fieldEditingEvent() {
     })
 
     body.addEventListener('compositionstart', (e) => {
-        if (!e.target.parentNode.classList.contains('dueDate')) return;
+        if (!e.target.closest('.dueDate')) return;
 
         auxInputValue = e.target.value;
     })
 
     body.addEventListener('compositionend', (e) => {
-        if (!e.target.parentNode.classList.contains('dueDate')) return;
+        if (!e.target.closest('.dueDate')) return;
         e.target.value = auxInputValue;
     })
 
