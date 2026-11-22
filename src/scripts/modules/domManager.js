@@ -205,23 +205,13 @@ function fieldEditingEvent() {
         };
     })
 
-    body.addEventListener('focusout', (e) => {
+    body.addEventListener('change', (e) => {
         if (!e.target.closest('.dueDate')) return;
 
         const dueDateWrapper = e.target.parentNode;
         const dayInput = dueDateWrapper.querySelector('.day-input');
         const monthInput = dueDateWrapper.querySelector('.month-input');
         const yearInput = dueDateWrapper.querySelector('.year-input');
-
-        const auxTargetClasses = e.target.classList;
-
-        if (e.target === yearInput) {
-            yearInput.value = (yearInput.value < getCurrentYear()) ? getCurrentYear() : yearInput.value;
-        }
-
-        if (e.target === monthInput) {
-            monthInput.value = (!checkMonth(monthInput.value)) ? getCurrentMonth() : monthInput.value;
-        }
 
         if (e.target === dayInput) {
             if (dayInput.value <= 0) {
@@ -231,6 +221,14 @@ function fieldEditingEvent() {
             if (dayInput.value > getMaxDay(monthInput.value, yearInput.value)) {
                 dayInput.value = getMaxDay(monthInput.value, yearInput.value);
             }
+        }
+        
+        if (e.target === monthInput) {
+            monthInput.value = (!checkMonth(monthInput.value)) ? getCurrentMonth() : monthInput.value;
+        }
+
+        if (e.target === yearInput) {
+            yearInput.value = (yearInput.value < getCurrentYear()) ? getCurrentYear() : yearInput.value;
         }
     })
 
