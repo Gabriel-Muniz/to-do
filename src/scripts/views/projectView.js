@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, formatISO } from "date-fns";
 import { renderTask, renderTaskSidebar } from "./taskView.js";
 import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components/buttons.js";
 
@@ -19,16 +19,16 @@ export function renderProject(project) {
     projectDueDateWrapper.className = 'project-dueDate dueDate';
 
     projectDueDateWrapper.innerHTML = '<input type="text" inputmode="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="text" inputmode="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="text" inputmode="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>';
-    const auxDueDate = new Date(project.dueDate);
+    const auxDueDate = new Date(project.dueDate);    
 
     const dayDueDate = projectDueDateWrapper.querySelector('.day-input');
-    dayDueDate.value = format(auxDueDate, 'dd');
+    dayDueDate.value = auxDueDate.getUTCDate();
 
     const monthDueDate = projectDueDateWrapper.querySelector('.month-input');
     monthDueDate.value = format(auxDueDate, 'MM');
 
     const yearDueDate = projectDueDateWrapper.querySelector('.year-input');
-    yearDueDate.value = format(auxDueDate, 'yyyy');
+    yearDueDate.value = auxDueDate.getUTCFullYear();
 
     projectTitle.textContent = project.title;
     projectDescription.textContent = project.description;

@@ -26,13 +26,13 @@ export function renderTask(task) {
     const auxDueDate = new Date(task.dueDate);
 
     const dayDueDate = taskDueDateWrapper.querySelector('.day-input');
-    dayDueDate.value = format(auxDueDate, 'dd');
+    dayDueDate.value = auxDueDate.getUTCDate();
 
     const monthDueDate = taskDueDateWrapper.querySelector('.month-input');
     monthDueDate.value = format(auxDueDate, 'MM');
 
     const yearDueDate = taskDueDateWrapper.querySelector('.year-input');
-    yearDueDate.value = format(auxDueDate, 'yyyy');
+    yearDueDate.value = auxDueDate.getUTCFullYear();
 
     taskWrapper.appendChild(taskTitle);
     taskWrapper.appendChild(taskProgress);
