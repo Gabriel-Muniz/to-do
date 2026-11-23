@@ -10,6 +10,10 @@ function getThreeDaysFromNow() {
     };
 }
 
+function checkDate(year, month, day) {
+    return dateFn.isExists(year, month, day)
+}
+
 function getCurrentYear() {
     return new Date().getUTCFullYear();
 }
@@ -49,4 +53,4 @@ function getMaxDay(month, year) {
     return maxDay;
 }
 
-export { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay }
+export { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay, checkDate }

@@ -3,7 +3,7 @@ import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject, deserializeProject } from "../utils/jsonManager.js";
 import { getProjectsArray, storeProjects, deleteProject, getObjsStates, storeObjsStates, getProjectsArraySerialized, getActiveProject, storeActiveProject } from "../utils/storageManager.js"
 import { renderProject, renderProjectSidebar } from "../views/projectView.js";
-import { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay } from "../utils/dateManager.js";
+import { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay, checkDate } from "../utils/dateManager.js";
 
 const body = document.querySelector('body');
 const sidebar = document.querySelector('.sidebar');
@@ -215,14 +215,14 @@ function fieldEditingEvent() {
 
         if (e.target === dayInput) {
             if (dayInput.value <= 0) {
-                dayInput.value = getThreeDaysFromNow();
+                dayInput.value = getThreeDaysFromNow().day;
             }
 
             if (dayInput.value > getMaxDay(monthInput.value, yearInput.value)) {
                 dayInput.value = getMaxDay(monthInput.value, yearInput.value);
             }
         }
-        
+
         if (e.target === monthInput) {
             monthInput.value = (!checkMonth(monthInput.value)) ? getCurrentMonth() : monthInput.value;
         }
@@ -230,6 +230,24 @@ function fieldEditingEvent() {
         if (e.target === yearInput) {
             yearInput.value = (yearInput.value < getCurrentYear()) ? getCurrentYear() : yearInput.value;
         }
+
+        let auxDay = Number(dayInput.value);
+        let auxMonth = Number(monthInput.value) - 1;
+        let auxYear = Number(yearInput.value);
+
+        if (!checkDate(auxYear, auxMonth, auxDay)) {
+            const theeDayFromNow = getThreeDaysFromNow()
+            dayInput.value = auxDay = theeDayFromNow.day;
+            monthInput.value = auxMonth = theeDayFromNow.month;
+            yearInput.value = auxYear = theeDayFromNow.year;
+        }
+
+        let auxUTCDate = new Date(Date.UTC(auxYear, auxMonth, auxDay)).toISOString();
+        const objDueDate = findProject(e.target.closest("[data-id]").dataset.id);
+        objDueDate.dueDate = auxUTCDate;
+
+        updateStorage();
+        renderSidebar();
     })
 
     body.addEventListener('compositionstart', (e) => {
