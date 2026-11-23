@@ -46,22 +46,15 @@ export function renderProject(project) {
             <option value="3" >Low</option>
         </select>
     `
-
-    /* s */
-
     const priorityOptions = projectPriority.querySelectorAll('option');
 
-    switch (project.priority) {
-        case 1:
-            priorityOptions[0].setAttribute('selected', "true")
-            break;
-        case 2:
-            priorityOptions[1].setAttribute('selected', "true")
-            break;
-        default:
-            priorityOptions[2].setAttribute('selected', "true")
-            break;
+    const OPTION_BY_PRIORITY = {
+        1: priorityOptions[0],
+        2: priorityOptions[1],
+        3: priorityOptions[2]
     }
+
+    OPTION_BY_PRIORITY[project.priority].setAttribute('selected', true);
 
     projectWrapper.appendChild(projectTitle);
     projectWrapper.appendChild(projectPriority);
