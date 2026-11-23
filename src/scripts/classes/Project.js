@@ -2,10 +2,19 @@ export class Project {
     constructor(id, title, dueDate, description, priority = 2, projectTasks = []) {
         this.id = (id === null) ? crypto.randomUUID() : id;
         this.title = title;
-        this.dueDate = (dueDate === null) ? new Date() : dueDate;
         this.description = description;
         this.priority = priority;
         this.projectTasks = projectTasks;
+
+        if (dueDate === null) {
+            const auxDateToday = new Date();
+            this.dueDate = new Date(Date.UTC(auxDateToday.getUTCFullYear(), auxDateToday.getUTCMonth(), auxDateToday.getUTCDate())).toISOString();
+            
+            return
+        }
+
+        this.dueDate = dueDate;
+
     }
 
     get projectLog() {

@@ -2,8 +2,16 @@ export class Task {
     constructor(id, title, dueDate, taskSteps = []) {
         this.id = (id === null) ? crypto.randomUUID() : id;
         this.title = title;
-        this.dueDate = (dueDate === null) ? new Date() : dueDate;
         this.taskSteps = taskSteps;
+
+        if (dueDate === null) {
+            const auxDateToday = new Date();
+            this.dueDate = new Date(Date.UTC(auxDateToday.getUTCFullYear(), auxDateToday.getUTCMonth(), auxDateToday.getUTCDate())).toISOString();
+
+            return
+        }
+
+        this.dueDate = dueDate;
     }
 
     get progress() {
@@ -38,7 +46,7 @@ export class Task {
         auxSteps.splice(auxSteps.findIndex(step => step.id === id), 1)
     };
 
-    removeItem(id){
+    removeItem(id) {
         this.removeStep(id);
     }
 }
