@@ -1,7 +1,13 @@
 import * as dateFn from "date-fns";
 
 function getThreeDaysFromNow() {
-    return new Date().getUTCDate() + 3;
+    const auxDate = dateFn.addDays(new Date(), 3);
+
+    return {
+        year: auxDate.getUTCFullYear(),
+        month: auxDate.getUTCMonth(),
+        day: auxDate.getUTCDate()
+    };
 }
 
 function getCurrentYear() {
