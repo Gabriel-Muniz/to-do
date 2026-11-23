@@ -7,7 +7,7 @@
     {
         "id": null,
         "title": "Call the dentist",
-        "status": true
+        "status": false
     },
     {
         "id": null,
@@ -22,6 +22,6 @@
     {
         "id": null,
         "title": "Pay the electricity bill",
-        "status": true
+        "status": false
     }
 ]
