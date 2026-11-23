@@ -205,6 +205,19 @@ function fieldEditingEvent() {
         };
     })
 
+    mainSection.addEventListener('change', (e) => {
+        if (!e.target.closest('.project-priority')) return;
+
+        const currentProject = findProject(e.target.closest('.project-wrapper').dataset.id);
+
+        if (Number(e.target.value) >= 1 && Number(e.target.value) <= 3) {
+            currentProject.priority = Number(e.target.value);
+        }
+
+        updateStorage();
+        renderSidebar();
+    })
+
     body.addEventListener('change', (e) => {
         if (!e.target.closest('.dueDate')) return;
 

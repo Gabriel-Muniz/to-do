@@ -19,7 +19,7 @@ export function renderProject(project) {
     projectDueDateWrapper.className = 'project-dueDate dueDate';
 
     projectDueDateWrapper.innerHTML = '<input type="text" inputmode="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="text" inputmode="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="text" inputmode="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>';
-    const auxDueDate = new Date(project.dueDate);    
+    const auxDueDate = new Date(project.dueDate);
 
     const dayDueDate = projectDueDateWrapper.querySelector('.day-input');
     dayDueDate.value = auxDueDate.getUTCDate();
@@ -33,7 +33,38 @@ export function renderProject(project) {
     projectTitle.textContent = project.title;
     projectDescription.textContent = project.description;
 
+
+    const projectPriority = document.createElement('div');
+    projectPriority.className = 'project-priority';
+
+    projectPriority.innerHTML = `
+        <label for="priority-select">Priority:</label>
+        
+        <select name="" id="priority-select">
+            <option value="1" >High</option>
+            <option value="2" >Medium</option>
+            <option value="3" >Low</option>
+        </select>
+    `
+
+    /* s */
+
+    const priorityOptions = projectPriority.querySelectorAll('option');
+
+    switch (project.priority) {
+        case 1:
+            priorityOptions[0].setAttribute('selected', "true")
+            break;
+        case 2:
+            priorityOptions[1].setAttribute('selected', "true")
+            break;
+        default:
+            priorityOptions[2].setAttribute('selected', "true")
+            break;
+    }
+
     projectWrapper.appendChild(projectTitle);
+    projectWrapper.appendChild(projectPriority);
     projectWrapper.appendChild(projectDueDateWrapper);
     projectWrapper.appendChild(projectDescription);
 
@@ -65,7 +96,14 @@ export function renderProjectSidebar(project) {
 
     const projectPriority = document.createElement('span')
     projectPriority.className = 'project-priority';
-    projectPriority.textContent = project.priority;
+
+    const priorityLabels = {
+        1: 'High',
+        2: 'Medium',
+        3: 'Low'
+    }
+
+    projectPriority.textContent = `Priority: ${priorityLabels[project.priority]}`;
 
     const projectTaskList = document.createElement('ul');
     projectTaskList.className = 'project-tasks';
