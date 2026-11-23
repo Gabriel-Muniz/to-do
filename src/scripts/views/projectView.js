@@ -97,13 +97,13 @@ export function renderProjectSidebar(project) {
     const projectPriority = document.createElement('span')
     projectPriority.className = 'project-priority';
 
-    const priorityLabels = {
+    const PRIORITY_LABELS = {
         1: 'High',
         2: 'Medium',
         3: 'Low'
     }
 
-    projectPriority.textContent = `Priority: ${priorityLabels[project.priority]}`;
+    projectPriority.textContent = `Priority: ${PRIORITY_LABELS[project.priority]}`;
 
     const projectTaskList = document.createElement('ul');
     projectTaskList.className = 'project-tasks';
