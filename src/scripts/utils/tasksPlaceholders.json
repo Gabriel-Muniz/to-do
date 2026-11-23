@@ -19,7 +19,7 @@
       {
         "id": null,
         "title": "Book the hotel",
-        "status": true
+        "status": false
       }
     ]
   },
@@ -43,7 +43,7 @@
       {
         "id": null,
         "title": "Empty the fridge",
-        "status": true
+        "status": false
       }
     ]
   },
