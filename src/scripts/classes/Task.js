@@ -15,11 +15,12 @@ export class Task {
     }
 
     get progress() {
-        const currentSteps = this.taskSteps;
-        const taskMilestone = currentSteps.length;
-        const completedSteps = currentSteps.filter(step => step.status === true).length;
-        const progressPercentage = (completedSteps / taskMilestone * 100).toFixed(2);
-        return Number(progressPercentage);
+        const taskMilestone = this.taskSteps.length;
+        const completedSteps = this.taskSteps.filter(step => step.status === true).length;
+        let progressPercentage = (completedSteps / taskMilestone * 100);
+        progressPercentage = Number.isInteger(progressPercentage) ? progressPercentage.toFixed(0) : progressPercentage.toFixed(2)
+
+        return Number.isNaN(Number(progressPercentage)) ? "\u2014" : `${progressPercentage}%`;
     }
 
     get taskLog() {
