@@ -124,6 +124,7 @@
 .task-wrapper,
 .step-wrapper {
     align-items: center;
+    transition: background-color .3s ease-out;
 }
 
 .sidebar-rendering {
@@ -317,7 +318,8 @@ ul {
     color: var(--accent-700);
 }
 
-*:has(> .delete-btn:hover) {
+*:has(> .delete-btn:hover),
+.project-wrapper.sidebar-rendering:has(.delete-btn:hover){
     background-color: #f6c2d9;
 }
 
