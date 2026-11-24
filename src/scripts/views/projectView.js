@@ -1,6 +1,7 @@
 import { format, formatISO } from "date-fns";
 import { renderTask, renderTaskSidebar } from "./taskView.js";
 import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components/buttons.js";
+import { getRemainingDays, formatRemainingDays } from "../utils/dateManager.js";
 
 export function renderProject(project) {
     const editableFields = ['.project-title', '.project-description']
@@ -90,6 +91,10 @@ export function renderProjectSidebar(project) {
     const projectPriority = document.createElement('span')
     projectPriority.className = 'project-priority';
 
+    const projectRemainingDays = document.createElement('span');
+    projectRemainingDays.className = 'project-dueDate';
+    projectRemainingDays.textContent = `Due date: ${formatRemainingDays(getRemainingDays(project.dueDate))}`;
+
     const PRIORITY_LABELS = {
         1: 'High',
         2: 'Medium',
@@ -108,6 +113,7 @@ export function renderProjectSidebar(project) {
     projectWrapper.appendChild(createExpandBtn());
     projectWrapper.appendChild(projectTitle);
     projectWrapper.appendChild(projectPriority);
+    projectWrapper.appendChild(projectRemainingDays);
     projectWrapper.appendChild(projectTaskList);
     projectWrapper.appendChild(createDeleteBtn());
 

@@ -10,6 +10,35 @@ function getThreeDaysFromNow() {
     };
 }
 
+function getRemainingDays(dueDate) {
+    const auxDueDate = new Date(dueDate);
+    const auxToday = new Date();
+
+    const dueUTCDate = Date.UTC(auxDueDate.getUTCFullYear(), auxDueDate.getUTCMonth(), auxDueDate.getUTCDate())
+    const todayDate = Date.UTC(auxToday.getFullYear(), auxToday.getMonth(), auxToday.getDate());
+    return dateFn.differenceInDays(dueUTCDate, todayDate);
+}
+
+function formatRemainingDays(remainingDays) {
+    if (remainingDays < 0 && remainingDays !== -1) {
+        return `${remainingDays * -1} days late`;
+    }
+
+    if (remainingDays === -1) {
+        return `Yesterday`;
+    }
+
+    if (remainingDays === 1) {
+        return 'Tomorrow';
+    }
+
+    if (remainingDays === 0) {
+        return 'Today';
+    }
+
+    return `${remainingDays} days remaining`
+}
+
 function checkDate(year, month, day) {
     return dateFn.isExists(year, month, day)
 }
@@ -53,4 +82,4 @@ function getMaxDay(month, year) {
     return maxDay;
 }
 
-export { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay, checkDate }
+export { getThreeDaysFromNow, getCurrentMonth, getCurrentYear, checkMonth, getMaxDay, checkDate, getRemainingDays, formatRemainingDays }
