@@ -64,6 +64,9 @@ export function renderTaskSidebar(task) {
     taskWrapper.className = 'task-wrapper sidebar-rendering'
     taskWrapper.dataset.id = task.id;
 
+    const taskHeader = document.createElement('div');
+    taskHeader.className = 'task-header';
+
     const taskBody = document.createElement('div');
     taskBody.className = 'task-body';
 
@@ -86,11 +89,14 @@ export function renderTaskSidebar(task) {
         taskStepList.append(renderStep(step, true));
     })
 
-    taskWrapper.appendChild(createExpandBtn())
-    taskWrapper.appendChild(taskTitle);
-    taskWrapper.appendChild(taskProgress);
+    taskHeader.appendChild(createExpandBtn())
+    taskHeader.appendChild(taskTitle);
+    taskHeader.appendChild(taskProgress);
+
     taskBody.appendChild(taskRemainingDays);
     taskBody.appendChild(taskStepList);
+
+    taskWrapper.appendChild(taskHeader);
     taskWrapper.appendChild(taskBody);
 
     return taskWrapper;

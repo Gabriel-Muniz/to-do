@@ -62,10 +62,10 @@
 
     padding: 1em;
 
-    .expand-btn {
-        width: 100%;
-        grid-column: 1/2;
-    }
+    /* .expand-btn { */
+        /* width: 100%; */
+        /* grid-column: 1/2; */
+    /* } */
 
     .project-title {
         grid-column: 2/3;
@@ -190,12 +190,27 @@
     }
 
     .task-progress {
-        grid-column: 3;
-        justify-self: end;
+        margin-left: auto;
+    }
+
+    .task-header{
+        grid-column: 1/-1;
+        display: flex;
+        align-items: center;
+        width: 100%;
     }
 
     .task-body {
+        display: flex;
+        flex-direction: column;
         grid-column: 1/-1;
+        padding: 0;
+        padding-left: 1.5em;
+    }
+
+    .task-dueDate{
+        font-size: 0.9em;
+        margin-bottom: 0.5em;
     }
 }
 
@@ -214,7 +229,7 @@
     flex-flow: row-reverse;
     justify-content: space-between;
     gap: 1em;
-    padding: 0 1.5em;
+    /* padding: 0 1.5em; */
 
     label:has(+ input[type="checkbox"]:checked) {
         text-decoration: line-through;
