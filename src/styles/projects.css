@@ -62,11 +62,6 @@
 
     padding: 1em;
 
-    /* .expand-btn { */
-        /* width: 100%; */
-        /* grid-column: 1/2; */
-    /* } */
-
     .project-title {
         grid-column: 2/3;
         grid-row: 2;
@@ -193,7 +188,7 @@
         margin-left: auto;
     }
 
-    .task-header{
+    .task-header {
         grid-column: 1/-1;
         display: flex;
         align-items: center;
@@ -208,7 +203,7 @@
         padding-left: 1.5em;
     }
 
-    .task-dueDate{
+    .task-dueDate {
         font-size: 0.9em;
         margin-bottom: 0.5em;
     }
@@ -224,12 +219,15 @@
     }
 }
 
+.main-section .step-wrapper {
+    padding: 0 1.5em;
+}
+
 .step-wrapper {
     display: flex;
     flex-flow: row-reverse;
     justify-content: space-between;
     gap: 1em;
-    /* padding: 0 1.5em; */
 
     label:has(+ input[type="checkbox"]:checked) {
         text-decoration: line-through;
