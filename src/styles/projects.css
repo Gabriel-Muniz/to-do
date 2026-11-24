@@ -182,6 +182,9 @@
 
     .task-title {
         grid-column: 2/3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .task-progress {
