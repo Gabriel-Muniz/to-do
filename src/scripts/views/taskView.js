@@ -1,6 +1,8 @@
 import { format } from "date-fns";
 import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components/buttons.js";
 import { renderStep } from "./stepView.js";
+import { getRemainingDays, formatRemainingDays } from "../utils/dateManager.js";
+
 
 export function renderTask(task) {
     const editableFields = ['.task-title']
@@ -73,6 +75,10 @@ export function renderTaskSidebar(task) {
     taskProgress.className = 'task-progress';
     taskProgress.textContent = task.progress + "%";
 
+    const taskRemainingDays = document.createElement('span');
+    taskRemainingDays.className = 'task-dueDate';
+    taskRemainingDays.textContent = `Due date: ${formatRemainingDays(getRemainingDays(task.dueDate))}`;
+
     const taskStepList = document.createElement('ul');
     taskStepList.className = 'task-steps'
 
@@ -83,6 +89,7 @@ export function renderTaskSidebar(task) {
     taskWrapper.appendChild(createExpandBtn())
     taskWrapper.appendChild(taskTitle);
     taskWrapper.appendChild(taskProgress);
+    taskBody.appendChild(taskRemainingDays);
     taskBody.appendChild(taskStepList);
     taskWrapper.appendChild(taskBody);
 
