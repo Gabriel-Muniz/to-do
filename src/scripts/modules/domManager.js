@@ -16,8 +16,7 @@ function expandProjectEvent() {
 
         if (!isExpandBtn) return;
 
-        const objWrapper = e.target.parentNode;
-        console.log(e.target);
+        const objWrapper = e.target.closest('[data-id]');
 
         objWrapper.classList.toggle('expanded');
 
