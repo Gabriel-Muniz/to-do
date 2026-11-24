@@ -75,8 +75,6 @@ body {
 
     padding-top: 2em;
 
-    overflow-y: auto;
-
     background-color: var(--secondary-300);
     width: 25%;
     min-width: 325px;
@@ -95,6 +93,7 @@ body {
 .sidebar,
 .main-section {
     overflow-y: auto;
+    scrollbar-gutter: stable;
     max-height: 100vh;
 }
 
