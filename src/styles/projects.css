@@ -5,10 +5,12 @@
     padding: 1.5em 1em;
 
     width: 500px;
-    border: 2px solid black;
+    border: 2px solid var(--accent-900);
 
     border-radius: .5em;
     overflow: hidden;
+    
+    background-color: var(--primary-100);
 
     .project-title {
         grid-row: 1/3;
@@ -48,7 +50,7 @@
         margin: 0 -1.5em -1.5em;
         height: 2.5em;
         border: none;
-        border-top: 2px solid black;
+        border-top: 2px solid var(--accent-900);
         background: none;
     }
 }
@@ -93,6 +95,14 @@
         margin-top: 1em;
 
         grid-column: 1/-1;
+    }
+
+    &:nth-child(odd){
+        background-color: var(--secondary-100);
+    }
+
+    &.project-wrapper:nth-child(even){
+        background-color: var(--primary-100);
     }
 }
 
@@ -162,7 +172,7 @@
 
     .new-step {
         position: relative;
-        border: 1px dashed black;
+        border: 1px dashed var(--accent-900);
         background: none;
         margin-bottom: .5em;
         justify-self: center;
@@ -172,8 +182,8 @@
 
 .main-section .task-wrapper {
     .task-title {
-        border-left: 1px solid black;
-        border-right: 1px dotted black;
+        border-left: 1px solid var(--accent-900);
+        border-right: 1px dotted var(--accent-900);
     }
 }
 
@@ -224,7 +234,7 @@
     }
 
     .task-steps {
-        border-top: 1px solid black;
+        border-top: 1px solid var(--accent-900);
     }
 }
 
@@ -252,6 +262,8 @@
         order: -1;
         background: none;
     }
+
+    accent-color: var(--secondary-500);
 }
 
 .projects-container {
@@ -285,10 +297,11 @@ ul {
 
 .expand-btn:before {
     content: "\27A4";
+    color: var(--accent-700);
 }
 
 *:has(> .delete-btn:hover) {
-    background-color: lightcoral;
+    background-color: #f6c2d9;
 }
 
 .add-btn::before {
@@ -303,7 +316,7 @@ ul {
     content: '';
     height: 0px;
     grid-column: 1/-1;
-    background-color: lightgreen;
+    background-color: #bcdfc9;
     transition: all .5s;
 }
 

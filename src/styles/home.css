@@ -1,3 +1,67 @@
+:root {
+    --text-50: #eef4f6;
+    --text-100: #dde8ee;
+    --text-200: #bbd2dd;
+    --text-300: #99bbcc;
+    --text-400: #77a4bb;
+    --text-500: #558eaa;
+    --text-600: #447188;
+    --text-700: #335566;
+    --text-800: #223944;
+    --text-900: #111c22;
+    --text-950: #090e11;
+
+    --background-50: #eff2f5;
+    --background-100: #dfe6ec;
+    --background-200: #bfccd9;
+    --background-300: #9fb2c6;
+    --background-400: #8099b3;
+    --background-500: #607f9f;
+    --background-600: #4d6680;
+    --background-700: #394c60;
+    --background-800: #263340;
+    --background-900: #131920;
+    --background-950: #0a0d10;
+
+    --primary-50: #eef4f6;
+    --primary-100: #dde8ee;
+    --primary-200: #bbd2dd;
+    --primary-300: #99bbcc;
+    --primary-400: #77a4bb;
+    --primary-500: #558eaa;
+    --primary-600: #447188;
+    --primary-700: #335566;
+    --primary-800: #223944;
+    --primary-900: #111c22;
+    --primary-950: #090e11;
+
+    --secondary-50: #eeeef6;
+    --secondary-100: #dddeee;
+    --secondary-200: #bbbddd;
+    --secondary-300: #999ccc;
+    --secondary-400: #777bbb;
+    --secondary-500: #555aaa;
+    --secondary-600: #444888;
+    --secondary-700: #333666;
+    --secondary-800: #222444;
+    --secondary-900: #111222;
+    --secondary-950: #090911;
+
+    --accent-50: #efeef6;
+    --accent-100: #e0ddee;
+    --accent-200: #c0bbdd;
+    --accent-300: #a199cc;
+    --accent-400: #8177bb;
+    --accent-500: #6255aa;
+    --accent-600: #4e4488;
+    --accent-700: #3b3366;
+    --accent-800: #272244;
+    --accent-900: #141122;
+    --accent-950: #0a0911;
+
+
+}
+
 body {
     min-height: 100vh;
     display: flex;
@@ -13,7 +77,7 @@ body {
 
     overflow-y: scroll;
 
-    background-color: bisque;
+    background-color: var(--secondary-300);
     width: 25%;
     min-width: 325px;
     height: inherit;
@@ -25,7 +89,7 @@ body {
     align-items: start;
     justify-content: center;
     flex: 1;
-    background-color: rgb(95, 212, 212);
+    background-color: var(--primary-200);
 }
 
 .sidebar,
@@ -43,7 +107,7 @@ body {
     transition: all .5s ease-out;
     overflow: hidden;
     font-size: 1.5em;
-    border: 2px solid black;
+    border: 2px solid var(--accent-900);
     border-radius: 4px;
 }
 
@@ -64,13 +128,13 @@ body {
     content: 'Add Project';
     height: 100%;
     font-size: 1em;
-    background-color: lightgreen;
+    background-color: #bcdfc9;
 
 }
 
 .add-project-btn:hover {
     height: 100px;
-    border: 2px solid black;
+    border: 2px solid var(--accent-900);
     border-radius: 10px;
 }
 
