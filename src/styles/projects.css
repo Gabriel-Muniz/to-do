@@ -109,10 +109,15 @@
 
 .sidebar-rendering {
 
-    &:not(.expanded)>ul {
+    .task-body,
+    .project-tasks {
+        transition: height 0.2s;
+    }
+
+    &:not(.expanded)>ul,
+    &:not(.expanded)>.task-body {
         height: 0;
         overflow: hidden;
-
     }
 
     &.expanded>.expand-btn {
@@ -188,6 +193,10 @@
         grid-column: 3;
         justify-self: end;
     }
+
+    .task-body {
+        grid-column: 1/-1;
+    }
 }
 
 .main-section .task-wrapper {
@@ -229,7 +238,6 @@
 
 ul {
     padding-left: 0;
-    transition: height 0.2s;
 }
 
 .delete-btn {
