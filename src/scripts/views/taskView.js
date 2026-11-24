@@ -21,7 +21,7 @@ export function renderTask(task) {
     taskProgress.className = 'task-progress'
 
     taskTitle.textContent = task.title;
-    taskProgress.textContent = `${task.progress}%`;
+    taskProgress.textContent = task.progress;
 
     taskDueDateWrapper.innerHTML = '<input type="text" inputmode="numeric" class="day-input" placeholder="dd" maxlength="2"/> / <input type="text" inputmode="numeric" class="month-input" placeholder="mm" maxlength="2"/> / <input type="text" inputmode="numeric" class="year-input" placeholder="yyyy" maxlength="4"/>'
 
@@ -76,7 +76,7 @@ export function renderTaskSidebar(task) {
 
     const taskProgress = document.createElement('span');
     taskProgress.className = 'task-progress';
-    taskProgress.textContent = task.progress + "%";
+    taskProgress.textContent = task.progress;
 
     const taskRemainingDays = document.createElement('span');
     taskRemainingDays.className = 'task-dueDate';

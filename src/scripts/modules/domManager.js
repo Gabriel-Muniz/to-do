@@ -325,7 +325,7 @@ function updateTaskProgress(taskId) {
 
     for (const task of taskWrapper) {
         const auxTemp = task.querySelector('.task-progress');
-        auxTemp.textContent = findProject(taskId).progress + "%";
+        auxTemp.textContent = findProject(taskId).progress;
     }
 }
 
