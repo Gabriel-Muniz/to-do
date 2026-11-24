@@ -1,8 +1,9 @@
-body{
+body {
     min-height: 100vh;
     display: flex;
 }
-.sidebar{
+
+.sidebar {
     display: flex;
     flex-direction: column;
 
@@ -17,7 +18,8 @@ body{
     min-width: 325px;
     height: inherit;
 }
-.main-section{
+
+.main-section {
     padding: 5em 0;
     display: flex;
     align-items: start;
@@ -27,15 +29,47 @@ body{
 }
 
 .sidebar,
-.main-section{
+.main-section {
     overflow-y: scroll;
     max-height: 100vh;
 }
 
-.add-project-btn{
+.add-project-btn {
+    position: relative;
     width: 80%;
+    height: 50px;
+    flex-shrink: 0;
     margin-bottom: 3em;
+    transition: all .5s ease-out;
+    overflow: hidden;
 }
-button:hover{
+
+.add-project-btn::before {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 0;
+}
+
+.add-project-btn:hover:before {
+    content: 'Add Project';
+    height: 100%;
+    font-size: 1.5em;
+    background-color: lightgreen;
+
+}
+
+.add-project-btn:hover {
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+button:hover {
     cursor: pointer;
 }
