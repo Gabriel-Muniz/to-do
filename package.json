@@ -22,7 +22,13 @@
   },
   "homepage": "https://github.com/Gabriel-Muniz/basicTemplate#readme",
   "devDependencies": {
+    "@eslint/css": "^2.0.1",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.1.1",
+    "@eslint/markdown": "^9.0.0",
     "css-loader": "^7.1.5",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.8",
     "style-loader": "^4.0.0",
