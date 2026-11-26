@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { findProject, updateStorage } from "../utils/storageManager.js";
 import { getRandomPlaceholder, instantiateProject, deserializeProject } from "../utils/jsonManager.js";
 import { getProjectsArray, storeProjects, deleteProject, getObjsStates, storeObjsStates, getProjectsArraySerialized, getActiveProject, storeActiveProject } from "../utils/storageManager.js"
