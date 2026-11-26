@@ -1,23 +1,23 @@
 function createDeleteBtn() {
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'delete-btn';
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "delete-btn";
 
-    return deleteBtn;
+  return deleteBtn;
 }
 
 function createExpandBtn() {
-    const expandBtn = document.createElement('button');
-    expandBtn.className = 'expand-btn';
+  const expandBtn = document.createElement("button");
+  expandBtn.className = "expand-btn";
 
-    return expandBtn;
+  return expandBtn;
 }
 
 function createNewObjBtn(btnClass) {
-    const newBtn = document.createElement('button');
-    newBtn.className = `add-btn new-${btnClass}`;
-    newBtn.textContent = '+';
+  const newBtn = document.createElement("button");
+  newBtn.className = `add-btn new-${btnClass}`;
+  newBtn.textContent = "+";
 
-    return newBtn;
+  return newBtn;
 }
 
-export {createDeleteBtn, createNewObjBtn, createExpandBtn}
+export { createDeleteBtn, createNewObjBtn, createExpandBtn };
