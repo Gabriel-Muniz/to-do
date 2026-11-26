@@ -1,4 +1,4 @@
-import { format, formatISO } from "date-fns";
+import { format} from "date-fns";
 import { renderTask, renderTaskSidebar } from "./taskView.js";
 import { createDeleteBtn, createNewObjBtn, createExpandBtn } from "../components/buttons.js";
 import { getRemainingDays, formatRemainingDays } from "../utils/dateManager.js";
